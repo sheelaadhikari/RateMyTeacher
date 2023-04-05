@@ -1,5 +1,6 @@
 import userModel from "../models/userModel.js";
 import { hashPassword } from './../helpers/authHelper.js';
+import JWT from "jsonwebtoken";
 
 export const registerController = async (req, res) => {
 
@@ -28,7 +29,7 @@ export const registerController = async (req, res) => {
 
         //check user
 
-        const existingUser = await userModel.findOne({ email });
+        const existingUser = await userModel.findOne({ email: email });
 
         //exsiting  user
         if (existingUser) {
@@ -68,5 +69,26 @@ export const registerController = async (req, res) => {
         })
 
     }
+
+};
+// POST LOGIN
+
+
+export const loginController = async (req, res) => {
+
+    try {
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success: false,
+            message: "error in login",
+            error,
+        });
+
+    }
+
+
 
 };
