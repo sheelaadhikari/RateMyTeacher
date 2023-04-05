@@ -8,7 +8,7 @@ const router = Express.Router()
 router.post('/register', registerController);
 
 // Login || Method POST
-router.post('./login', loginController);
+router.post('/login', loginController);
 
 
 
