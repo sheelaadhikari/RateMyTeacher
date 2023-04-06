@@ -6,7 +6,14 @@ export const registerController = async (req, res) => {
 
 
     try {
-        const { name, email, password, phone, address } = req.body
+        // const { name, email, password, phone, address } = req.body
+        const name = req.body.name;
+        const email = req.body.email;
+        const password = req.body.password;
+        const phone = req.body.phone;
+        const address = req.body.address;
+
+
 
         //validation
 
@@ -44,17 +51,18 @@ export const registerController = async (req, res) => {
 
 
         //save user
-        const user = await new userModel({
-            name,
-            email,
-            phone,
-            address,
+        const user = new userModel({
+            name: name,
+            email: email,
+            phone: phone,
+            address: address,
             password: hashedPassword
-        }).save();
+        })
+        const savedUser = await user.save();
         res.status(201).send({
             success: true,
             message: "User registered",
-            user
+            user: savedUser
         });
 
 
@@ -132,3 +140,9 @@ export const loginController = async (req, res) => {
 
 
 };
+
+
+
+export const userListController = async () => {
+
+}
