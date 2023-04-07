@@ -1,5 +1,5 @@
 import userModel from "../models/userModel.js";
-import { comparePassword, hashPassword } from './../helpers/authHelper.js';
+import { comparePassword, hashPassword, } from './../helpers/authHelper.js';
 import JWT from "jsonwebtoken";
 
 export const registerController = async (req, res) => {
@@ -144,5 +144,11 @@ export const loginController = async (req, res) => {
 
 
 export const userListController = async () => {
+
+}
+
+//test controller
+export const testController = async (req, res) => {
+    res.send("protected routes")
 
 }
