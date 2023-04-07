@@ -14,6 +14,11 @@ export const requireSignIn = async (req, res, next) => {
     }
     catch (error) {
         console.log(error);
+        res.status(401).send({
+            sucess: false,
+            error,
+            message: "unauthorized user"
+        });
 
     }
 };
@@ -44,6 +49,6 @@ export const isAdmin = async (req, res, next) => {
             success: false,
             error,
             message: "error in admin middleware",
-        })
+        });
     }
-}
+};
