@@ -1,16 +1,28 @@
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Pagenotfound from './pages/Pagenotfound';
+import Policy from './pages/Policy';
 
-import './App.css';
-import Footer from './components/Layout/Footer';
-import Header from './components/Layout/Header';
-import Layout from './components/Layout/Layout';
 
 function App() {
   return (
-    <Layout>
+    <>
 
-      <h1>teacher rating app</h1>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/policy' element={<Policy />} />
 
-    </Layout>
+        <Route path='*' element={<Pagenotfound />} />
+
+
+
+      </Routes>
+
+    </>
 
   );
 }
