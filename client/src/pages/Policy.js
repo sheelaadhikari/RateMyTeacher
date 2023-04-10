@@ -7,4 +7,4 @@ const Policy = () => {
     )
 }
 
-export default Policy
+export default Policy;

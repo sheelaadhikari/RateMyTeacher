@@ -7,4 +7,4 @@ const Pagenotfound = () => {
     )
 }
 
-export default Pagenotfound
+export default Pagenotfound;
