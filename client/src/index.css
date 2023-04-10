@@ -6,3 +6,29 @@
 }
 /* font-family: 'Playfair Display', serif;
 font-family: 'Poppins', sans-serif; */
+
+/* navbar css */
+.navbar {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+
+  line-height: 26px;
+  box-shadow: 0 8px 6px -6px gray;
+  --webkit-box-shadow: 0 8px 6px -6px gray;
+  border-bottom: 0 solid gray !important;
+}
+
+.nav-link {
+  font-weight: 300px !important;
+}
+
+.active {
+  border-bottom: 2px solid black;
+}
+
+.nav-brand {
+  font-family: "roboto", "sans-serif";
+  font-weight: 700;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
