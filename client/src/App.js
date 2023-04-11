@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Pagenotfound from './pages/Pagenotfound';
 import Teachers from './pages/Teachers';
 import Login from './pages/Login';
+import Contact from './pages/Contact';
+import Policy from './pages/Policy';
 
 
 function App() {
@@ -17,6 +19,10 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/teachers' element={<Teachers />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/policy' element={<Policy />} />
+
+
         <Route path='*' element={<Pagenotfound />} />
 
 
