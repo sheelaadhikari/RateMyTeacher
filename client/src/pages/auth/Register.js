@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout/Layout';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -8,13 +10,30 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const navigate = useNavigate;
+
 
 
     //  form function
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(name, email, password, phone, address,);
-        toast.success("registered successfully");
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,
+                { name, email, phone, email, password });
+            if (res.data.success) {
+                toast.success(res.data.success);
+            }
+            else {
+                toast.success(res.data.message);
+            }
+
+        }
+
+        catch (error) {
+            console.log(error);
+            toast.error("something went wrong");
+
+        }
     };
 
 
