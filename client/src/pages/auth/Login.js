@@ -21,7 +21,7 @@ const Login = () => {
 
 
     return (
-        <Layout title="Register - RateMyTeacher">
+        <Layout title="Login - RateMyTeacher">
             <div className='register'>
                 <h1>Login Page</h1>
                 <form onSubmit={handleSubmit}>

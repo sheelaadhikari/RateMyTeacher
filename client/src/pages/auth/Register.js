@@ -13,7 +13,7 @@ const Register = () => {
     //  form function
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, email, password, phone, address);
+        console.log(name, email, password, phone, address,);
         toast.success("registered successfully");
     };
 
