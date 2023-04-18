@@ -42,7 +42,7 @@ const Register = () => {
 
     return (
         <Layout title="Register - RateMyTeacher">
-            <div className='register'>
+            <div className='form-container'>
                 <h1>Register Page</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
