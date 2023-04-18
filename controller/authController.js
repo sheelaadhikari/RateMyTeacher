@@ -18,21 +18,16 @@ export const registerController = async (req, res) => {
         //validation
 
         if (!name) {
-            return res.send({ error: "Name is required" })
+            return res.send({ message: "Name is required" })
         }
         if (!email) {
-            return res.send({ error: "Email is required" })
+            return res.send({ message: "Email is required" })
         }
         if (!password) {
-            return res.send({ error: "Password is required" })
+            return res.send({ message: "Password is required" })
         }
-        if (!phone) {
-            return res.send({ error: "Phone is required" })
-        }
-        if (!address) {
-            return res.send({ error: "Address is required" })
 
-        }
+
 
         //check user
 
@@ -113,7 +108,7 @@ export const loginController = async (req, res) => {
         //creating token
         const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d", });
         res.status(200).send({
-            success: false,
+            success: true,
             message: "logged in successfully",
             user: {
                 name: user.name,
