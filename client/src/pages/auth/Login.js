@@ -3,6 +3,7 @@ import Layout from '../../components/Layout/Layout';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/auth';
 
 
 
@@ -11,6 +12,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
 
 
@@ -24,7 +26,12 @@ const Login = () => {
             console.log(res.data)
             if (res.data.success) {
                 toast.success(res.data.message);
-                navigate("/")
+                setAuth({
+                    ...auth,
+                    user: res.data.user,
+                    token: res.data.token
+                });
+                navigate("/");
 
             }
             else {
