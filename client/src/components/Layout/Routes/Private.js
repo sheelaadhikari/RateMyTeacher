@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import axios from 'axios';
 import Spinner from "../Spinner";
 
+
 export default function PrivateRoutes() {
     const [ok, setOk] = useState(false);
     const [auth, setAuth] = useAuth();
