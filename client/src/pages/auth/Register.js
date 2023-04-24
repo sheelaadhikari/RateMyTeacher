@@ -19,7 +19,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const res = await axios.post('/api/v1/auth/register',
-                { name, email, phone, email, password });
+                { name, email, phone, address, password });
             console.log(res.data)
             if (res.data.success) {
                 toast.success(res.data.message);

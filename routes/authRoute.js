@@ -3,6 +3,7 @@ import {
     registerController,
     loginController,
     testController,
+    forgotPasswordController,
 
 } from '../controller/authController.js';
 import userModel from "../models/userModel.js";
@@ -16,6 +17,9 @@ router.post('/register', registerController);
 
 // Login || Method POST
 router.post('/login', loginController);
+
+//forget password || Post
+router.post('forgot-password', forgotPasswordController);
 
 // the user list 
 router.get('/users-test', async (req, res) => {

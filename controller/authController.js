@@ -140,10 +140,43 @@ export const loginController = async (req, res) => {
 
 export const userListController = async () => {
 
-}
+};
+
+// forgot password controller
+export const forgotPasswordController = async (req, res) => {
+
+    try {
+        const { email, question, newPassword } = req.body
+        if (!email) {
+            res.status(400).send({ message: 'Email is required' });
+        }
+        if (!question) {
+            res.status(400).send({ message: 'Email is required' });
+        }
+        if (!newPassword) {
+            res.status(400).send({ message: 'Email is required' });
+        }
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "something went wrong",
+            error
+        });
+    }
+};
 
 //test controller
 export const testController = async (req, res) => {
-    res.send("protected routes")
+    try {
 
-}
+        res.send("protected routes")
+    }
+    catch (error) {
+        console.log(error);
+        res.send({ error });
+
+    }
+
+};
