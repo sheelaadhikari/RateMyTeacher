@@ -19,7 +19,7 @@ router.post('/register', registerController);
 router.post('/login', loginController);
 
 //forget password || Post
-router.post('forgot-password', forgotPasswordController);
+router.post('/forgot-password', forgotPasswordController);
 
 // the user list 
 router.get('/users-test', async (req, res) => {

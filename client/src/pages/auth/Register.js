@@ -20,8 +20,11 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const payload = { name, email, phone, address, password, answer };
+            console.log(" this is payload", payload);
             const res = await axios.post('/api/v1/auth/register',
-                { name, email, phone, address, password, answer });
+                payload);
+
             console.log(res.data)
             if (res.data.success) {
                 toast.success(res.data.message);
