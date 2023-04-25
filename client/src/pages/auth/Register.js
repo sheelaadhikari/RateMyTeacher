@@ -10,6 +10,8 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [answer, setAnswer] = useState("");
+
     const navigate = useNavigate();
 
 
@@ -19,7 +21,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const res = await axios.post('/api/v1/auth/register',
-                { name, email, phone, address, password });
+                { name, email, phone, address, password, answer });
             console.log(res.data)
             if (res.data.success) {
                 toast.success(res.data.message);
@@ -43,8 +45,8 @@ const Register = () => {
     return (
         <Layout title="Register - RateMyTeacher">
             <div className='form-container'>
-                <h1>Register Page</h1>
                 <form onSubmit={handleSubmit}>
+                    <h4 className='title'>Register Page</h4>
                     <div className="mb-3">
                         <input type="text"
                             value={name}
@@ -81,6 +83,13 @@ const Register = () => {
                             onChange={(e) => { setAddress(e.target.value) }}
 
                             className="form-control" id="exampleInputAddress" aria-describedby="emailHelp" placeholder='Enter Your Address' />
+                    </div>
+                    <div className="mb-3">
+                        <input type="text"
+                            value={answer}
+                            onChange={(e) => { setAnswer(e.target.value) }}
+
+                            className="form-control" id="exampleInputAddress" aria-describedby="emailHelp" placeholder='what is your fav sport?' />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
