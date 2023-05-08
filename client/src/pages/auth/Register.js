@@ -32,7 +32,7 @@ const Register = () => {
             }
             else {
                 toast.error(res.data.message);
-            }
+            } ``
 
         }
 
