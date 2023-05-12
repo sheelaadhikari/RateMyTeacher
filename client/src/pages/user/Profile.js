@@ -1,18 +1,17 @@
 import React from 'react'
 import Layout from '../../components/Layout/Layout'
-import AdminMenu from '../../components/Layout/AdminMenu';
-import Dashboard from '../user/Dashboard';
+import UserMenu from './../../components/Layout/UserMenu';
 
-const CreateProduct = () => {
+const Profile = () => {
     return (
-        <Layout title={"Dashboard - All Create Product"}>
+        <Layout title={"Your Profile"}>
             <div className='container-fluid m-3 p-3'>
                 <div className='row'>
                     <div className='col-md-3'>
-                        <AdminMenu />
+                        <UserMenu />
                     </div>
                     <div className='col-md-9'>
-                        <h1> CreateProduct</h1>
+                        <h1>  Your Profile</h1>
                     </div>
                 </div>
             </div>
@@ -21,4 +20,4 @@ const CreateProduct = () => {
     )
 }
 
-export default CreateProduct;
+export default Profile
