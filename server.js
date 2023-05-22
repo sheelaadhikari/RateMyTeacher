@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     res.send("<h1>welcome to this project</h1>")
 });
 //port
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 //run listen
 app.listen(PORT, () => {
     console.log(`server is running on ${process.env.DEV_MODE} mode on port ${PORT}`.bgCyan.white);

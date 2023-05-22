@@ -41,7 +41,7 @@ router.get('/users-test', async (req, res) => {
 })
 
 // test routes
-router.get('/test', requireSignIn, isAdmin, testController);
+router.get('/test', requireSignIn, isAdmin, testController,);
 
 
 
