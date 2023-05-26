@@ -13,9 +13,9 @@ const teacherSchema = new mongoose.Schema({
         required: true,
     },
     photo: {
-        type: Buffer,
+        data: Buffer,
         contentType: String,
-        required: true,
+
     },
     rating: {
         type: Number,
