@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const teacherSchema = new mongooseSchema({
+const teacherSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -20,6 +20,7 @@ const teacherSchema = new mongooseSchema({
     rating: {
         type: Number,
         rquired: true,
+        default: 0,
     },
     bio: {
         type: String,

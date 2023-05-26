@@ -1,6 +1,8 @@
-import { isAdmin, requireSignIn } from "../middlewares/authMiddleware";
-import express from express;
-import { createTeacherController } from "../controller/teacherController";
+import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import express from 'express';
+import { createTeacherController } from "../controller/teacherController.js";
+import formidable from 'express-formidable';
+
 
 
 
@@ -8,5 +10,5 @@ import { createTeacherController } from "../controller/teacherController";
 const router = express.Router();
 
 //routes
-router.post('/create-teacher', requireSignIn, isAdmin, createTeacherController);
+router.post('/create-teacher', requireSignIn, isAdmin, formidable(), createTeacherController);
 export default router;
