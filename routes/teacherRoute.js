@@ -17,7 +17,7 @@ router.post('/create-teacher', requireSignIn, isAdmin, formidable(), createTeach
 router.get('/get-teacher', getTeacherController);
 
 // get single teacher
-router.get('/get-teacher/slug', getSingleTeacherController);
+router.get('/get-teacher/:slug', getSingleTeacherController);
 
 
 export default router;

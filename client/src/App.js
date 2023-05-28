@@ -16,9 +16,9 @@ import AdminRoute from "./components/Layout/Routes/AdminRoute";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Users from "./pages/Admin/Users";
 import CreateCategory from "./pages/Admin/CreateCategory";
-import CreateProduct from "./pages/Admin/CreateProduct";
 import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
+import CreateTeacher from "./pages/Admin/CreateTeacher";
 
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
-          <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/create-teacher" element={<CreateTeacher />} />
         </Route>
 
         <Route path="/about" element={<About />} />

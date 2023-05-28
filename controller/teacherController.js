@@ -53,13 +53,13 @@ export const createTeacherController = async (req, res) => {
 //get all teachers
 export const getTeacherController = async (req, res) => {
     try {
-        const teachers = await teacherModel.find({}).select("-photo").limit(12).sort({ createdAt: -1 });
+        const teachers = await teacherModel.find({}).populate('_id').select("-photo").limit(12).sort({ createdAt: -1 });
         res.status(200).send({
             countTotal: teachers.length,
             success: true,
             message: "all teachers",
             teachers,
-        })
+        });
 
 
     }
@@ -67,7 +67,7 @@ export const getTeacherController = async (req, res) => {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "error in getting teacher",
+            message: "error in getting  all teacher",
             error: error.message,
 
         });
@@ -79,4 +79,30 @@ export const getTeacherController = async (req, res) => {
 
 
 
-export const getSingleTeacherController = async (req, res) => { };
+export const getSingleTeacherController = async (req, res) => {
+
+    try {
+
+
+        const teacher = await teacherModel.findOne({ slug: req.params.slug }).select("-photo").populate('_id');
+        res.status(200).send({
+            success: true,
+            message: " single teacher fetched",
+            teacher,
+
+        });
+    }
+
+
+
+
+    catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "error while getting single teacher",
+            error,
+        });
+    }
+
+};
