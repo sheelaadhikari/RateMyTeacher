@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Pagenotfound from "./pages/Pagenotfound";
-import Teachers from "./pages/Teachers";
 import Contact from "./pages/Contact";
 import Policy from "./pages/Policy";
 import Login from "./pages/auth/Login";
@@ -18,6 +17,7 @@ import Users from "./pages/Admin/Users";
 import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
+import Teachers from './pages/Admin/Teachers';
 
 
 function App() {
@@ -39,6 +39,8 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/create-teacher" element={<CreateTeacher />} />
+          <Route path="admin/teachers" element={<Teachers />} />
+
         </Route>
 
         <Route path="/about" element={<About />} />
@@ -49,7 +51,6 @@ function App() {
 
 
 
-        <Route path="/teachers" element={<Teachers />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />

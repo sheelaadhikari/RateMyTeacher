@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import About from './../../pages/About';
-import Teachers from './../../pages/Teachers';
 
 const Footer = () => {
     return (

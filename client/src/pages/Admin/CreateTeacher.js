@@ -32,7 +32,7 @@ const CreateTeacher = () => {
                 toast.error(data?.message);
             } else {
                 toast.success("teacher created successfully");
-                navigate("/teachers");
+                navigate("/dashboard/admin/teachers");
             }
         } catch (error) {
             console.log(error);
