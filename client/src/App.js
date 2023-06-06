@@ -18,6 +18,7 @@ import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
 import CreateTeacher from "./pages/Admin/CreateTeacher";
 import Teachers from './pages/Admin/Teachers';
+import UpdateTeacher from "./pages/Admin/UpdateTeacher";
 
 
 function App() {
@@ -39,7 +40,10 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/create-teacher" element={<CreateTeacher />} />
+          <Route path="admin/teacher/:slug" element={<UpdateTeacher />} />
+
           <Route path="admin/teachers" element={<Teachers />} />
+
 
         </Route>
 
