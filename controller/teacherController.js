@@ -168,7 +168,7 @@ export const updateTeacherController = async (req, res) => {
             teachers.photo.contentType = photo.type;
         }
         await teachers.save();
-        res.status(201).send({
+        res.status(200).send({
             success: true,
             message: "teachers updated successfully",
             teachers,

@@ -56,11 +56,11 @@ const UpdateTeacher = () => {
 
 
 
-            const { data } = axios.post("/api/v1/teacher/create-teacher", teacherData);
+            const { data } = axios.put(`/api/v1/teacher/update-teacher/${id}`, teacherData);
             if (data?.success) {
                 toast.error(data?.message);
             } else {
-                toast.success("teacher created successfully");
+                toast.success("teacher updated successfully");
                 navigate("/dashboard/admin/teachers");
             }
         } catch (error) {
@@ -69,7 +69,7 @@ const UpdateTeacher = () => {
         }
     }
     return (
-        <Layout title={"Dashboard - All Create Teacher"}>
+        <Layout title={"Dashboard - All Update Teacher"}>
             <div className="container-fluid m-3 p-3">
                 <div className="row">
                     <div className="col-md-3">
