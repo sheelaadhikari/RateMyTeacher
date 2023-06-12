@@ -7,10 +7,6 @@ import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 const { Option } = Select;
 
-
-
-
-
 const UpdateTeacher = () => {
     const navigate = useNavigate();
     const params = useParams();
@@ -23,7 +19,9 @@ const UpdateTeacher = () => {
     //get single teacher
     const getSingleTeacher = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/teacher/get-teacher/${params.slug}`)
+            const { data } = await axios.get(
+                `/api/v1/teacher/get-teacher/${params.slug}`
+            );
             setName(data.teacher.name);
             setSubject(data.teacher.subject);
             setBio(data.teacher.bio);
@@ -31,12 +29,9 @@ const UpdateTeacher = () => {
             setId(data.teacher._id);
 
             console.log(data);
+        } catch (error) {
+            console.log(error);
         }
-        catch (error) {
-            console.log(error)
-
-        }
-
     };
     useEffect(() => {
         getSingleTeacher();
@@ -51,12 +46,12 @@ const UpdateTeacher = () => {
             teacherData.append("subject", subject);
             teacherData.append("id", id);
 
-
             photo && teacherData.append("photo", photo);
 
-
-
-            const { data } = axios.put(`/api/v1/teacher/update-teacher/${id}`, teacherData);
+            const { data } = axios.put(
+                `/api/v1/teacher/update-teacher/${id}`,
+                teacherData
+            );
             if (data?.success) {
                 toast.error(data?.message);
             } else {
@@ -67,7 +62,26 @@ const UpdateTeacher = () => {
             console.log(error);
             toast.error("something went wrong");
         }
-    }
+    };
+
+    // Delete the teacher
+
+    const handleDelete = async () => {
+        try {
+            let answer = window.prompt("are you sure to delete the teacher");
+            if (!answer) return;
+
+            const { data } = await axios.delete(
+                `/api/v1/teacher/delete-teacher/${id}`
+            );
+            toast.success("teacher deleted  successfully");
+            navigate("/dashboard/admin/teachers");
+        } catch (error) {
+            console.log(error);
+            toast.error("something went wrong");
+        }
+    };
+
     return (
         <Layout title={"Dashboard - All Update Teacher"}>
             <div className="container-fluid m-3 p-3">
@@ -99,15 +113,16 @@ const UpdateTeacher = () => {
                                         className="img img-responsive"
                                     />
                                 </div>
-                            ) : (<div className="text-center">
-                                <img
-                                    src={`/api/v1/teacher/teacher-photo/${id}`}
-                                    alt="teacher_photo"
-                                    height={"200px"}
-                                    className="img img-responsive"
-                                />
-                            </div>)}
-
+                            ) : (
+                                <div className="text-center">
+                                    <img
+                                        src={`/api/v1/teacher/teacher-photo/${id}`}
+                                        alt="teacher_photo"
+                                        height={"200px"}
+                                        className="img img-responsive"
+                                    />
+                                </div>
+                            )}
                         </div>
 
                         <div className="mb-3">
@@ -145,7 +160,13 @@ const UpdateTeacher = () => {
                             <div className="mb-3">
                                 <button className="btn btn-primary" onClick={handleUpdate}>
                                     {" "}
-                                    update teacher
+                                    Update Teacher
+                                </button>
+                            </div>
+                            <div className="mb-3">
+                                <button className="btn btn-danger" onClick={handleDelete}>
+                                    {" "}
+                                    Delete Teacher
                                 </button>
                             </div>
                         </div>

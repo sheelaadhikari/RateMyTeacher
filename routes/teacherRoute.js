@@ -31,7 +31,7 @@ router.get("/get-teacher/:slug", getSingleTeacherController);
 router.get("/teacher-photo/:_id", teacherPhotoController);
 
 // delete teacher
-router.delete("/teacher/:_id", deleteTeacherController);
+router.delete("/delete-teacher/:_id", deleteTeacherController);
 
 //update teacher
 router.put(
