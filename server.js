@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoute.js';
 import teacherRoutes from './routes/teacherRoute.js'
+import rateRoutes from './routes/rateRoute.js';
 import cors from 'cors';
 
 
@@ -26,6 +27,7 @@ app.use(morgan('dev'));
 //routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/teacher", teacherRoutes);
+app.use("/api/v1/rate", rateRoutes);
 
 
 
