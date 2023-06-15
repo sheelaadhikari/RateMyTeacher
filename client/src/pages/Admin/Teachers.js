@@ -33,7 +33,7 @@ const Teachers = () => {
                 </div>
                 <div className="col-md-9 ">
                     <h1 className="text-center">All Teachers List</h1>
-                    <div className="d-flex">
+                    <div className="flex">
                         {teachers?.map((t) => (
                             <Link
                                 key={t._id}

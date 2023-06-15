@@ -8,8 +8,8 @@ export const rateTeacherController = async (req, res) => {
         const type = req.body.type;
         const rateValue = req.body.rateValue;
 
-        console.log(req.body);
-        console.log(req.user._id);
+        // console.log(req.body);
+        // console.log(req.user._id);
         console.log(rateValue);
 
 
@@ -20,6 +20,10 @@ export const rateTeacherController = async (req, res) => {
         //     return res.status(400).send({ error: "teacher is required" });
 
         // if (!user) return res.status(400).send({ error: "user is required" });
+
+
+
+
 
         //save it
         const rate = new rateTeacherModel({
@@ -52,7 +56,7 @@ export const rateTeacherController = async (req, res) => {
 //get all ratings 
 export const getAllRatingController = async (req, res) => {
     try {
-        const ratings = await rateTeacherModel.find({}).select("teacher");
+        const ratings = await rateTeacherModel.find({}).select("");
         console.log(ratings);
         res.status(200).send({
             success: true,
