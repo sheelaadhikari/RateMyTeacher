@@ -20,50 +20,85 @@ import CreateTeacher from "./pages/Admin/CreateTeacher";
 import Teachers from './pages/Admin/Teachers';
 import UpdateTeacher from "./pages/Admin/UpdateTeacher";
 import TeacherDetail from "./pages/user/TeacherDetail";
+import WrapElement from "./WrapElement";
+import { useAuth } from "./context/auth";
+import { useEffect, useState } from "react";
+import Spinner from "./components/Layout/Spinner";
+import WrapAdminElement from "./WrapAdminElement";
 
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/dashboard" element={<PrivateRoutes />}>
-          <Route path="user" element={<Dashboard />} />
-          <Route path="user/orders" element={<Orders />} />
-          <Route path="user/profile" element={<Profile />} />
-          <Route path="user/teacher-detail" element={<TeacherDetail />} />
+
+  const [initialized, setInitialized] = useState(false);
+
+  const [auth] = useAuth()
+
+  useEffect(() => {
+    if (auth.isLoggedIn != undefined) {
+      setInitialized(true)
+    }
+  }, [auth])
+
+  const isUser = auth?.user?.role === 0;
+
+  return initialized ? <>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/tesst" element={<WrapElement>
+        <h1>hello</h1>
+      </WrapElement>} />
+
+      <Route path="/dashboard" element={<WrapElement>
+        <Dashboard />
+      </WrapElement>} />
+      <Route path="/dashboard/admin" element={<WrapAdminElement>
+        <AdminDashboard />
+      </WrapAdminElement>} />
+
+      <Route path="/teacher/:slug" element={<WrapElement>
+        <TeacherDetail />
+      </WrapElement>} />
+
+      <Route path="/admin/create-teacher" element={<WrapAdminElement>
+        <CreateTeacher />
+      </WrapAdminElement>} />
+      <Route path="/admin/teacher/:slug" element={<WrapAdminElement>
+        <UpdateTeacher />
+      </WrapAdminElement>} />
+      <Route path="/admin/users" element={<WrapAdminElement>
+        <Users />
+      </WrapAdminElement>} />
 
 
 
 
 
-        </Route>
-        <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="admin" element={<AdminDashboard />} />
-          <Route path="admin/users" element={<Users />} />
-          <Route path="admin/create-teacher" element={<CreateTeacher />} />
-          <Route path="admin/teacher/:slug" element={<UpdateTeacher />} />
-
-          <Route path="admin/teachers" element={<Teachers />} />
-
-
-        </Route>
-
-        <Route path="/about" element={<About />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
 
 
 
+      {/* <Route path="/dashboard" element={<PrivateRoutes />}>
+        <Route path="user" element={<Dashboard />} />
+        <Route path="teacher/:slug" element={<TeacherDetail />} />
+        <Route path="user/orders" element={<Orders />} />
+        <Route path="user/profile" element={<Profile />} />
+      </Route>
+      <Route path="/dashboard" element={<AdminRoute />}>
+        <Route path="admin" element={<AdminDashboard />} />
+        <Route path="admin/users" element={<Users />} />
+        <Route path="admin/create-teacher" element={<CreateTeacher />} />
+        <Route path="admin/teacher/:slug" element={<UpdateTeacher />} />
+        <Route path="admin/teachers" element={<Teachers />} />
+      </Route> */}
+      <Route path="/about" element={<About />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
 
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/policy" element={<Policy />} />
-        <Route path="*" element={<Pagenotfound />} />
-      </Routes>
-    </>
-  );
+      <Route path="/login" element={<Login />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/policy" element={<Policy />} />
+      <Route path="*" element={<Pagenotfound />} />
+    </Routes>
+  </> : <Spinner />
 }
 
 export default App;

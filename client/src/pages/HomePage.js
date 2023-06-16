@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
     const [auth, setAuth] = useAuth();
     const [teachers, setTeachers] = useState(null);
-
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -19,7 +18,6 @@ const HomePage = () => {
         try {
             setLoading(true);
             const res = await axios.get("/api/v1/teacher/get-teacher");
-            console.log(res.data.teachers);
             setTeachers(res.data.teachers);
         } catch (error) {
             console.log(error);
@@ -29,8 +27,7 @@ const HomePage = () => {
         }
     };
 
-    console.log(loading);
-
+    const isUser = auth?.user?.role === 0;
     return (
         <Layout>
             <div>{loading ? "loading" : "loaded"}</div>
@@ -38,41 +35,33 @@ const HomePage = () => {
             {/* <pre>{JSON.stringify(auth, null, 4)}</pre> */}
 
             <div className="flex">
-
                 {teachers?.map((t) => (
-
                     <Link
                         key={t._id}
-                        to=
-                        {`/homepage/${t.slug}`}
+                        to={isUser ? `/teacher/${t.slug}` : `/admin/teacher/${t.slug}`}
                         className="teacher-link"
                     >
-                        <div className="card m-2" style={{ width: "18rem" }} onClick={() => {
-                            console.log(t.slug);
-                            console.log(t._id);
-
-                        }} >
-                            <img src={`/api/v1/teacher/teacher-photo/${t._id}`} className="card-img-top" alt={t.name} />
+                        <div
+                            className="card m-2"
+                            style={{ width: "18rem" }}
+                            onClick={() => {
+                                console.log(t.slug);
+                                console.log(t._id);
+                            }}
+                        >
+                            <img
+                                src={`/api/v1/teacher/teacher-photo/${t._id}`}
+                                className="card-img-top"
+                                alt={t.name}
+                            />
                             <div className="card-body">
                                 <h5 className="card-title">{t.name}</h5>
                                 <p className="card-text"> {t.bio}</p>
                             </div>
                         </div>
-
-
                     </Link>
-
-
                 ))}
-
             </div>
-
-
-
-
-
-
-
         </Layout>
     );
 };

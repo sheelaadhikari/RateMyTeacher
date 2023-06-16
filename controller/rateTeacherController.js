@@ -54,7 +54,7 @@ export const rateTeacherController = async (req, res) => {
 
 
 //get all ratings 
-export const getAllRatingController = async (req, res) => {
+export const getRatingsByTeacherId = async (req, res) => {
     try {
         const ratings = await rateTeacherModel.find({}).select("");
         console.log(ratings);
