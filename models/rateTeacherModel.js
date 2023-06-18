@@ -28,6 +28,10 @@ const rateTeacherSchema = new mongoose.Schema({
         type: Number,
 
     },
+    appearanceValue: {
+        type: Number,
+
+    },
     teacher: {
         type: mongoose.ObjectId,
         ref: 'Teachers',

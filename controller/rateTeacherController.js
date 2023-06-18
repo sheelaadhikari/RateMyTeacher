@@ -56,13 +56,109 @@ export const rateTeacherController = async (req, res) => {
 //get all ratings 
 export const getRatingsByTeacherId = async (req, res) => {
     try {
-        const ratings = await rateTeacherModel.find({}).select("");
-        console.log(ratings);
+
+        const ratings = await rateTeacherModel.find({ teacher: req.params.teacher_id });
+
+        //punctuality
+        let punctualitySum = 0;
+        let punctualityCount = 0;
+        //teachingStyle
+        let teachingStyleSum = 0;
+        let teachingStyleCount = 0;
+        //funnyness
+        let funnynessSum = 0;
+        let funnynessCount = 0;
+        //ineteractivity
+        let interactivitySum = 0;
+        let interactivityCount = 0;
+        //strictness
+        let strictnessSum = 0;
+        let strictnessCount = 0;
+        //assignment
+        let assignmentSum = 0;
+        let assignmentCount = 0;
+        //appearance
+        let appearanceSum = 0;
+        let appearanceCount = 0;
+
+
+
+        for (let i = 0; i < ratings.length; i++) {
+            if (ratings[i].punctualityValue !== undefined) {
+                punctualitySum = punctualitySum + ratings[i].punctualityValue;
+                punctualityCount = punctualityCount + 1;
+            }
+
+            if (ratings[i].teachingStyleValue !== undefined) {
+                teachingStyleSum = teachingStyleSum + ratings[i].teachingStyleValue;
+                teachingStyleCount = teachingStyleCount + 1;
+            }
+
+            if (ratings[i].funnynessValue !== undefined) {
+                funnynessSum = funnynessSum + ratings[i].funnynessValue;
+                funnynessCount = funnynessCount + 1;
+            }
+            if (ratings[i].interactivityValue !== undefined) {
+                interactivitySum = interactivitySum + ratings[i].interactivityValue;
+                interactivityCount = interactivityCount + 1;
+            }
+
+            if (ratings[i].strictnessValue !== undefined) {
+                strictnessSum = strictnessSum + ratings[i].strictnessValue;
+                strictnessCount = strictnessCount + 1;
+            }
+
+            if (ratings[i].assignmentValue !== undefined) {
+                assignmentSum = assignmentSum + ratings[i].assignmentValue;
+                assignmentCount = assignmentCount + 1;
+            }
+            if (ratings[i].appearanceValue !== undefined) {
+                appearanceSum = appearanceSum + ratings[i].appearanceValue;
+                appearanceCount = appearanceCount + 1;
+            }
+
+
+
+
+            // const rating = ratings[i]["funnynessValue"] || ratings[i]["teachingStyleValue"] || ratings[i]["strictnessValue"] || ratings[i]["interactivityValue"]
+            //     || ratings[i]["punctualityValue"] || ratings[i]["assignmentValue"] || ratings[i]["appearanceValue"] || 0;
+            // sum = sum + rating;
+
+
+
+        }
+        let punctualityAverage = punctualitySum / punctualityCount;
+        let teachingStyleAverage = teachingStyleSum / teachingStyleCount;
+        let funnynessAverage = funnynessSum / funnynessCount;
+        let interactivityAverage = interactivitySum / interactivityCount;
+        let strictnessAverage = strictnessSum / strictnessCount;
+        let assignmentAverage = assignmentSum / assignmentCount;
+        let appearanceAverage = appearanceSum / appearanceCount;
+
+
+
+
+
+
+
+        let averageValue = ratings.length === 0 ? 0 : (punctualityAverage + teachingStyleAverage + funnynessAverage + interactivityAverage + strictnessAverage + assignmentAverage + appearanceAverage) / 7;
+        console.log(averageValue);
         res.status(200).send({
             success: true,
-            message: "all teacher ratings",
-            ratings,
+            message: "teacher ratings",
+            ratings: {
+                overall: averageValue,
+                punctualityAverage,
+                funnynessAverage,
+                teachingStyleAverage,
+                strictnessAverage,
+                interactivityAverage,
+                assignmentAverage,
+                appearanceAverage,
+
+            },
         })
+        console.log(ratings);
 
 
 

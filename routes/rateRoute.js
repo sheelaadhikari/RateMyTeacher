@@ -12,7 +12,7 @@ router.post("/rate-teacher", requireSignIn, rateTeacherController);
 
 //get all ratings
 
-router.get("/teacher/:id/ratings", requireSignIn, getRatingsByTeacherId);
+router.get("/teacher/:teacher_id/ratings", requireSignIn, getRatingsByTeacherId);
 
 
 export default router;
