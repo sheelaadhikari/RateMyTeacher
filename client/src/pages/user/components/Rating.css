@@ -1,0 +1,14 @@
+.star-box {
+  display: block;
+}
+.star-box1 {
+  height: 30px;
+  width: 80px;
+}
+.star-box2 {
+  height: 30px;
+  width: 80px;
+  overflow: hidden;
+  position: relative;
+  top: -30px;
+}

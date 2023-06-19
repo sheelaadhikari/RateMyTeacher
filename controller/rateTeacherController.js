@@ -12,18 +12,12 @@ export const rateTeacherController = async (req, res) => {
         // console.log(req.user._id);
         console.log(rateValue);
 
-
-
         //validation
 
         // if (!teacher)
         //     return res.status(400).send({ error: "teacher is required" });
 
         // if (!user) return res.status(400).send({ error: "user is required" });
-
-
-
-
 
         //save it
         const rate = new rateTeacherModel({
@@ -48,16 +42,12 @@ export const rateTeacherController = async (req, res) => {
     }
 };
 
-
-
-
-
-
-//get all ratings 
+//get all ratings
 export const getRatingsByTeacherId = async (req, res) => {
     try {
-
-        const ratings = await rateTeacherModel.find({ teacher: req.params.teacher_id });
+        const ratings = await rateTeacherModel.find({
+            teacher: req.params.teacher_id,
+        });
 
         //punctuality
         let punctualitySum = 0;
@@ -80,8 +70,6 @@ export const getRatingsByTeacherId = async (req, res) => {
         //appearance
         let appearanceSum = 0;
         let appearanceCount = 0;
-
-
 
         for (let i = 0; i < ratings.length; i++) {
             if (ratings[i].punctualityValue !== undefined) {
@@ -117,32 +105,39 @@ export const getRatingsByTeacherId = async (req, res) => {
                 appearanceCount = appearanceCount + 1;
             }
 
-
-
-
             // const rating = ratings[i]["funnynessValue"] || ratings[i]["teachingStyleValue"] || ratings[i]["strictnessValue"] || ratings[i]["interactivityValue"]
             //     || ratings[i]["punctualityValue"] || ratings[i]["assignmentValue"] || ratings[i]["appearanceValue"] || 0;
             // sum = sum + rating;
-
-
-
         }
-        let punctualityAverage = punctualitySum / punctualityCount;
-        let teachingStyleAverage = teachingStyleSum / teachingStyleCount;
-        let funnynessAverage = funnynessSum / funnynessCount;
-        let interactivityAverage = interactivitySum / interactivityCount;
-        let strictnessAverage = strictnessSum / strictnessCount;
-        let assignmentAverage = assignmentSum / assignmentCount;
-        let appearanceAverage = appearanceSum / appearanceCount;
+        let punctualityAverage = (punctualitySum / punctualityCount) || 0;
+        let teachingStyleAverage = (teachingStyleSum / teachingStyleCount) || 0;
+        let funnynessAverage = (funnynessSum / funnynessCount) || 0;
+        let interactivityAverage = (interactivitySum / interactivityCount) || 0;
+        let strictnessAverage = (strictnessSum / strictnessCount) || 0;
+        let assignmentAverage = (assignmentSum / assignmentCount) || 0;
+        let appearanceAverage = (appearanceSum / appearanceCount) || 0;
 
+        let noOfRatingType =
+            (!!punctualityAverage ? 1 : 0) +
+            (!!teachingStyleAverage ? 1 : 0) +
+            (!!funnynessAverage ? 1 : 0) +
+            (!!interactivityAverage ? 1 : 0) +
+            (!!strictnessAverage ? 1 : 0) +
+            (!!appearanceAverage ? 1 : 0) +
+            (!!assignmentAverage ? 1 : 0);
 
+        const sumOfAverage = (punctualityAverage +
+            teachingStyleAverage +
+            funnynessAverage +
+            interactivityAverage +
+            strictnessAverage +
+            assignmentAverage +
+            appearanceAverage);
 
-
-
-
-
-        let averageValue = ratings.length === 0 ? 0 : (punctualityAverage + teachingStyleAverage + funnynessAverage + interactivityAverage + strictnessAverage + assignmentAverage + appearanceAverage) / 7;
-        console.log(averageValue);
+        let averageValue =
+            ratings.length === 0
+                ? 0
+                : sumOfAverage / noOfRatingType;
         res.status(200).send({
             success: true,
             message: "teacher ratings",
@@ -155,21 +150,14 @@ export const getRatingsByTeacherId = async (req, res) => {
                 interactivityAverage,
                 assignmentAverage,
                 appearanceAverage,
-
             },
-        })
-        console.log(ratings);
-
-
-
-    }
-    catch (error) {
+        });
+    } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
             message: "something went wrong",
             error: error.message,
-        })
+        });
     }
-
 };

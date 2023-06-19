@@ -25,6 +25,8 @@ import { useAuth } from "./context/auth";
 import { useEffect, useState } from "react";
 import Spinner from "./components/Layout/Spinner";
 import WrapAdminElement from "./WrapAdminElement";
+import axios from "axios";
+import RateTeacher from "./pages/user/RateTeacher";
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
 
   useEffect(() => {
     if (auth.isLoggedIn != undefined) {
+      axios.defaults.headers.common['Authorization'] = auth.token
+
       setInitialized(true)
     }
   }, [auth])
@@ -48,12 +52,16 @@ function App() {
         <h1>hello</h1>
       </WrapElement>} />
 
-      <Route path="/dashboard" element={<WrapElement>
+      <Route path="/dashboard" isExact element={<WrapElement>
         <Dashboard />
       </WrapElement>} />
-      <Route path="/dashboard/admin" element={<WrapAdminElement>
+      <Route path="/admin/dashboard" isExact element={<WrapAdminElement>
         <AdminDashboard />
       </WrapAdminElement>} />
+
+      <Route path="/teacher/:teacher_id/rate" element={<WrapElement>
+        <RateTeacher />
+      </WrapElement>} />
 
       <Route path="/teacher/:slug" element={<WrapElement>
         <TeacherDetail />
