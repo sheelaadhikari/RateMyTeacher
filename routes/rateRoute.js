@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getRatingsByTeacherId, rateTeacherController } from "../controller/rateTeacherController.js";
+import { getMyRatingsByTeacherId, getRatingsByTeacherId, rateTeacherController } from "../controller/rateTeacherController.js";
 import { requireSignIn } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
@@ -10,9 +10,14 @@ const router = express.Router();
 router.post("/rate-teacher", requireSignIn, rateTeacherController);
 
 
-//get ratings by teacher id
+//get all ratings by teacher_id 
 
 router.get("/teacher/:teacher_id/ratings", requireSignIn, getRatingsByTeacherId);
+
+// get my ratings by teacher-id 
+router.get("/teacher/:teacher_id/my-ratings", requireSignIn, getMyRatingsByTeacherId);
+
+
 
 
 export default router;

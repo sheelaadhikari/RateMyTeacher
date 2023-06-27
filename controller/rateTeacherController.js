@@ -162,3 +162,30 @@ export const getRatingsByTeacherId = async (req, res) => {
         });
     }
 };
+
+// get my ratings
+
+
+export const getMyRatingsByTeacherId = async (req, res) => {
+    try {
+        const ratings = await rateTeacherModel.find({
+            teacher: req.params.teacher_id,
+            user: req.user._id
+        });
+        console.log(ratings);
+
+
+        res.status(200).send({
+            success: true,
+            message: "my teacher ratings",
+            ratings: ratings,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "something went wrong",
+            error: error.message,
+        });
+    }
+};

@@ -3,13 +3,16 @@ import { FaStar } from "react-icons/fa";
 import './Rating.css';
 
 const RateBox = (props) => {
+    const r = props.value;
 
     return (
         <div className="star-box">
             <div className="star-box1">
                 {[1, 2, 3, 4, 5].map((star, index) => {
                     return (
-                        <label key={star} style={{ color: "#cccccc" }} >
+
+
+                        <label key={star} style={{ color: index <= r - 1 ? "red" : "#cccccc" }} >
 
                             <div > <FaStar /></div>
                         </label >
