@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import UserMenu from "../../components/Layout/UserMenu";
-import RatingBox from "./components/RatingBox";
+import RatingDisplayBox from "./components/RatingDisplayBox";
 // teacher details
 const TeacherDetail = () => {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const TeacherDetail = () => {
   const [teacher, setTeacher] = useState(null);
   const [loading, setLoading] = useState(true);
   const [teacherRating, setTeacherRating] = useState(null);
+
 
   useEffect(() => {
     getSingleTeacherDetail();
@@ -77,13 +78,13 @@ const TeacherDetail = () => {
                     alt={teacher?.name}
                   />
                   <div>
-                    <Link to={`/teacher/${teacher?._id}/rate`}>
+                    <Link to={`/teacher/${teacher?.slug}/rate`}>
                       Rate Teacher
                     </Link>
                   </div>
                   <div className="card-body">
                     <div className="card-text">
-                      <RatingBox rating={teacherRating?.overall} />
+                      <RatingDisplayBox rating={teacherRating?.overall} />
                     </div>
                     <h5 className="card-title">{teacher?.name}</h5>
                     <p className="card-text"> {teacher?.subject}</p>
@@ -91,33 +92,33 @@ const TeacherDetail = () => {
                     <div className="card-text">
                       <div>
                         Teaching Style:{" "}
-                        <RatingBox
+                        <RatingDisplayBox
                           rating={teacherRating?.teachingStyleAverae}
                         />
                       </div>
                       <div>
                         Punctuality
-                        <RatingBox rating={teacherRating?.punctualityAverage} />
+                        <RatingDisplayBox rating={teacherRating?.punctualityAverage} />
                       </div>
                       <div>
                         Funnyness
-                        <RatingBox rating={teacherRating?.funnynessAverage} />
+                        <RatingDisplayBox rating={teacherRating?.funnynessAverage} />
                       </div>
                       <div>
                         Strictness
-                        <RatingBox rating={teacherRating?.strictnessAverage} />
+                        <RatingDisplayBox rating={teacherRating?.strictnessAverage} />
                       </div>
                       <div>
                         Appearance
-                        <RatingBox rating={teacherRating?.appearanceAverage} />
+                        <RatingDisplayBox rating={teacherRating?.appearanceAverage} />
                       </div>
                       <div>
                         Assignment
-                        <RatingBox rating={teacherRating?.assignmentAverage} />
+                        <RatingDisplayBox rating={teacherRating?.assignmentAverage} />
                       </div>
                       <div>
                         Ineteractivity
-                        <RatingBox
+                        <RatingDisplayBox
                           rating={teacherRating?.interactivityAverage}
                         />
                       </div>

@@ -59,7 +59,7 @@ function App() {
         <AdminDashboard />
       </WrapAdminElement>} />
 
-      <Route path="/teacher/:teacher_id/rate" element={<WrapElement>
+      <Route path="/teacher/:slug/rate" element={<WrapElement>
         <RateTeacher />
       </WrapElement>} />
 

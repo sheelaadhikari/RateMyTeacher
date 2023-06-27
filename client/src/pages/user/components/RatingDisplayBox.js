@@ -2,7 +2,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import './Rating.css';
 
-const RatingBox = (props) => {
+const RatingDisplayBox = (props) => {
     const r = props.rating;
     return (
         <div className="star-box">
@@ -44,4 +44,4 @@ const RatingBox = (props) => {
     );
 };
 
-export default RatingBox;
+export default RatingDisplayBox;
