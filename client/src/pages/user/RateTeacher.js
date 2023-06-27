@@ -98,7 +98,11 @@ const TeacherDetail = () => {
                                             return (
                                                 <div key={category}>
                                                     {`How Do you like the ${category} of this teacher?`}
-                                                    <RateBox value={ratingIndex === -1 ? 0 : myRatings[ratingIndex].value} />
+                                                    <RateBox value={ratingIndex === -1 ? 0 : myRatings[ratingIndex].value}
+
+                                                        category={category}
+
+                                                    />
                                                 </div>
                                             );
                                         }) : null}

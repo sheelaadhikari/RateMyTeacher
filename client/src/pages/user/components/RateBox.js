@@ -4,6 +4,7 @@ import './Rating.css';
 
 const RateBox = (props) => {
     const r = props.value;
+    const c = props.category;
 
     return (
         <div className="star-box">
@@ -12,7 +13,11 @@ const RateBox = (props) => {
                     return (
 
 
-                        <label key={star} style={{ color: index <= r - 1 ? "red" : "#cccccc" }} >
+                        <label onClick={() => {
+                            console.log("clicked");
+                            console.log("star", star, "category", c);
+
+                        }} key={star} style={{ color: index <= r - 1 ? "red" : "#cccccc" }} >
 
                             <div > <FaStar /></div>
                         </label >
