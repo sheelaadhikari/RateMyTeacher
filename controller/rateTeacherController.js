@@ -5,12 +5,11 @@ export const rateTeacherController = async (req, res) => {
     try {
         const teacher = req.body.teacher;
         const user = req.user._id;
-        const type = req.body.type;
-        const rateValue = req.body.rateValue;
+        const category = req.body.category;
+        const value = req.body.value;
 
         // console.log(req.body);
         // console.log(req.user._id);
-        console.log(rateValue);
 
         //validation
 
@@ -23,7 +22,8 @@ export const rateTeacherController = async (req, res) => {
         const rate = new rateTeacherModel({
             teacher: teacher,
             user: user,
-            [type]: rateValue,
+            category: category,
+            value: value
             // rateValue: rateValue,
         });
         const savedRating = await rate.save();
@@ -48,6 +48,7 @@ export const getRatingsByTeacherId = async (req, res) => {
         const ratings = await rateTeacherModel.find({
             teacher: req.params.teacher_id,
         });
+        console.log(ratings);
 
         //punctuality
         let punctualitySum = 0;
@@ -72,42 +73,42 @@ export const getRatingsByTeacherId = async (req, res) => {
         let appearanceCount = 0;
 
         for (let i = 0; i < ratings.length; i++) {
-            if (ratings[i].punctualityValue !== undefined) {
-                punctualitySum = punctualitySum + ratings[i].punctualityValue;
+            if (ratings[i].category === 'punctuality') {
+                punctualitySum = punctualitySum + ratings[i].value;
                 punctualityCount = punctualityCount + 1;
             }
-
-            if (ratings[i].teachingStyleValue !== undefined) {
-                teachingStyleSum = teachingStyleSum + ratings[i].teachingStyleValue;
-                teachingStyleCount = teachingStyleCount + 1;
-            }
-
-            if (ratings[i].funnynessValue !== undefined) {
-                funnynessSum = funnynessSum + ratings[i].funnynessValue;
-                funnynessCount = funnynessCount + 1;
-            }
-            if (ratings[i].interactivityValue !== undefined) {
-                interactivitySum = interactivitySum + ratings[i].interactivityValue;
-                interactivityCount = interactivityCount + 1;
-            }
-
-            if (ratings[i].strictnessValue !== undefined) {
-                strictnessSum = strictnessSum + ratings[i].strictnessValue;
+            if (ratings[i].category === 'strictness') {
+                strictnessSum = strictnessSum + ratings[i].value;
                 strictnessCount = strictnessCount + 1;
             }
-
-            if (ratings[i].assignmentValue !== undefined) {
-                assignmentSum = assignmentSum + ratings[i].assignmentValue;
-                assignmentCount = assignmentCount + 1;
+            if (ratings[i].category === 'teachingStyle') {
+                teachingStyleSum = teachingStyleSum + ratings[i].value;
+                teachingStyleCount = teachingStyleCount + 1;
             }
-            if (ratings[i].appearanceValue !== undefined) {
-                appearanceSum = appearanceSum + ratings[i].appearanceValue;
+            if (ratings[i].category === 'funnyness') {
+                funnynessSum = funnynessSum + ratings[i].value;
+                funnynessCount = funnynessCount + 1;
+            }
+            if (ratings[i].category === 'interactivity') {
+                interactivitySum = interactivitySum + ratings[i].value;
+                interactivityCount = interactivityCount + 1;
+            }
+            if (ratings[i].category === 'appearance') {
+                appearanceSum = appearanceSum + ratings[i].value;
                 appearanceCount = appearanceCount + 1;
             }
+            if (ratings[i].category === 'assignment') {
+                assignmentSum = assignmentSum + ratings[i].value;
+                assignmentCount = assignmentCount + 1;
+            }
 
-            // const rating = ratings[i]["funnynessValue"] || ratings[i]["teachingStyleValue"] || ratings[i]["strictnessValue"] || ratings[i]["interactivityValue"]
-            //     || ratings[i]["punctualityValue"] || ratings[i]["assignmentValue"] || ratings[i]["appearanceValue"] || 0;
-            // sum = sum + rating;
+
+            // if (ratings[i].teachingStyleValue !== undefined) {
+            //     teachingStyleSum = teachingStyleSum + ratings[i].teachingStyleValue;
+            //     teachingStyleCount = teachingStyleCount + 1;
+            // }
+
+
         }
         let punctualityAverage = (punctualitySum / punctualityCount) || 0;
         let teachingStyleAverage = (teachingStyleSum / teachingStyleCount) || 0;

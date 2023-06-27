@@ -6,11 +6,11 @@ import { requireSignIn } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 
-//get teachers
+//rate teacher
 router.post("/rate-teacher", requireSignIn, rateTeacherController);
 
 
-//get all ratings
+//get ratings by teacher id
 
 router.get("/teacher/:teacher_id/ratings", requireSignIn, getRatingsByTeacherId);
 

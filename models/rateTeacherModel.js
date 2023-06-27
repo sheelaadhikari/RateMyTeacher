@@ -4,34 +4,34 @@ const rateTeacherSchema = new mongoose.Schema({
         type: Number,
 
     },
-    funnynessValue: {
-        type: Number,
+    // funnynessValue: {
+    //     type: Number,
 
-    },
-    teachingStyleValue: {
-        type: Number,
+    // },
+    // teachingStyleValue: {
+    //     type: Number,
 
-    },
-    strictnessValue: {
-        type: Number,
+    // },
+    // strictnessValue: {
+    //     type: Number,
 
-    },
-    punctualityValue: {
-        type: Number,
+    // },
+    // punctualityValue: {
+    //     type: Number,
 
-    },
-    interactivityValue: {
-        type: Number,
+    // },
+    // interactivityValue: {
+    //     type: Number,
 
-    },
-    assignmentValue: {
-        type: Number,
+    // },
+    // assignmentValue: {
+    //     type: Number,
 
-    },
-    appearanceValue: {
-        type: Number,
+    // },
+    // appearanceValue: {
+    //     type: Number,
 
-    },
+    // },
     teacher: {
         type: mongoose.ObjectId,
         ref: 'Teachers',
@@ -41,6 +41,14 @@ const rateTeacherSchema = new mongoose.Schema({
     user: {
         type: mongoose.ObjectId,
         ref: 'users',
+        required: true,
+    },
+    category: {
+        type: String,
+        required: true,
+    },
+    value: {
+        type: Number,
         required: true,
     }
 
