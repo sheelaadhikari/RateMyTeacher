@@ -67,6 +67,12 @@ function App() {
         <TeacherDetail />
       </WrapElement>} />
 
+
+
+      <Route path="/user/dashboard" element={<WrapElement>
+        <Users />
+      </WrapElement>} />
+
       <Route path="/admin/create-teacher" element={<WrapAdminElement>
         <CreateTeacher />
       </WrapAdminElement>} />

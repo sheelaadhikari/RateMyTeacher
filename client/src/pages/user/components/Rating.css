@@ -5,6 +5,14 @@
   height: 30px;
   width: 80px;
 }
+.star-click:hover {
+  cursor: pointer;
+  color: #ff0000;
+}
+
+input[type="radio"] {
+  display: none;
+}
 .star-box2 {
   height: 30px;
   width: 80px;

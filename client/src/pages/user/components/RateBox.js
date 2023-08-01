@@ -1,33 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
-import './Rating.css';
+import "./Rating.css";
 
-const RateBox = (props) => {
-    const r = props.value;
-    const c = props.category;
+const RateBox = () => {
+
+    const [rating, setRating] = useState(null);
+
+    const [hover, setHover] = useState(null);
+
+
 
     return (
         <div className="star-box">
-            <div className="star-box1">
+            <div className="star-box1 ">
                 {[1, 2, 3, 4, 5].map((star, index) => {
+                    const ratingValue = index + 1;
+
+
+
+
                     return (
+                        <label>
+                            <input type="radio" name="rating" value={ratingValue} onClick={() => {
+
+                                console.log("star", star);
 
 
-                        <label onClick={() => {
-                            console.log("clicked");
-                            console.log("star", star, "category", c);
+                                setRating(ratingValue);
 
-                        }} key={star} style={{ color: index <= r - 1 ? "red" : "#cccccc" }} >
+                            }
+                            }
 
-                            <div > <FaStar /></div>
-                        </label >
+                            />
+
+
+                            <FaStar className="star" color={ratingValue <= (hover || rating) ? "#ff0000" : "#e4e5e9"}
+                                onMouseEnter={() => setHover(ratingValue)}
+                                onMouseLeave={() => setHover(null)}
+
+                            />
+
+                        </label>
                     );
                 })}
             </div>
-
-
-
-        </div >
+        </div>
     );
 };
 

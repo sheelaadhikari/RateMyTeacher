@@ -30,11 +30,11 @@ const HomePage = () => {
     const isUser = auth?.user?.role === 0;
     return (
         <Layout>
-            <div>{loading ? "loading" : "loaded"}</div>
-            <h1>HomePage</h1>
+            <div>{loading ? "loading" : "home Page"}</div>
+
             {/* <pre>{JSON.stringify(auth, null, 4)}</pre> */}
 
-            <div className="flex">
+            <div className="d-flex">
                 {teachers?.map((t) => (
                     <Link
                         key={t._id}
