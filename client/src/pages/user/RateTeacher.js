@@ -88,24 +88,30 @@ const TeacherDetail = () => {
                                     </div>
 
                                     <div>
-                                        {myRatings ? (categoryArray).map((category, index) => {
-                                            const ratingIndex = myRatings.findIndex((rating, ri) => {
-
-                                                return rating.category === category;
-
+                                        {myRatings
+                                            ? categoryArray.map((category, index) => {
+                                                const ratingIndex = myRatings.findIndex(
+                                                    (rating, ri) => {
+                                                        return rating.category === category;
+                                                    }
+                                                );
+                                                console.log("rating index ", category, ratingIndex);
+                                                return (
+                                                    <div key={category}>
+                                                        {`How Do you like the ${category} of this teacher?`}
+                                                        <RateBox
+                                                            value={
+                                                                ratingIndex === -1
+                                                                    ? 0
+                                                                    : myRatings[ratingIndex].value
+                                                            }
+                                                            category={category}
+                                                            teacher={teacher?._id}
+                                                        />
+                                                    </div>
+                                                );
                                             })
-                                            console.log("rating index ", category, ratingIndex);
-                                            return (
-                                                <div key={category}>
-                                                    {`How Do you like the ${category} of this teacher?`}
-                                                    <RateBox value={ratingIndex === -1 ? 0 : myRatings[ratingIndex].value}
-
-                                                        category={category}
-
-                                                    />
-                                                </div>
-                                            );
-                                        }) : null}
+                                            : null}
                                     </div>
                                 </div>
                             </div>
