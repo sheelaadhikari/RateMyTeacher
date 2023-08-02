@@ -7,6 +7,9 @@ const RateBox = (props) => {
     const v = props.value;
     const c = props.category;
     const t = props.teacher;
+    const myRatings = props.myRatings;
+    const getMyTeacherRatings = props.getMyTeacherRatings;
+
 
     const [hover, setHover] = useState(null);
     const [value, setValue] = useState(null);
@@ -19,10 +22,11 @@ const RateBox = (props) => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        console.log("payload is ", payload);
 
         try {
             const res = await axios.post("/api/v1/rate/rate-teacher", payload);
+            // to recall my ratings api
+            getMyTeacherRatings();
             console.log("the datas are", res.data);
         } catch (error) {
             console.log("error");
@@ -33,24 +37,32 @@ const RateBox = (props) => {
         <div className="star-box">
             <div className="star-box1 ">
                 {[1, 2, 3, 4, 5].map((star, index) => {
-                    const ratingValue = index + 1;
-                    console.log("star", star);
+
+                    let colored = false;
+                    if (hover) {
+                        colored = star <= hover;
+                    } else {
+                        colored = star <= v
+                    }
 
                     return (
                         <label>
                             <input
                                 type="radio"
                                 name="rating"
-                                value={ratingValue}
+                                value={star}
                                 onClick={handleClick}
                             />
 
                             <FaStar
                                 className="star"
-                                color={ratingValue <= (hover || value) ? "#ff0000" : "#e4e5e9"}
-                                onMouseEnter={() => setHover(ratingValue)}
+                                color={colored ? "#ff0000" : "#e4e5e9"}
+                                onMouseEnter={() => setHover(star)}
                                 onMouseLeave={() => setHover(null)}
-                                onClick={() => setValue(star)}
+                                onClick={() => setValue(star)
+
+
+                                }
                             />
                         </label>
                     );

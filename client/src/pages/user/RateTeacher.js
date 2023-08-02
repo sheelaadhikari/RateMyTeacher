@@ -24,6 +24,7 @@ const TeacherDetail = () => {
     const [loading, setLoading] = useState(true);
     const [myRatings, setMyRatings] = useState(null);
 
+
     useEffect(() => {
         getSingleTeacherDetail();
     }, []);
@@ -95,18 +96,19 @@ const TeacherDetail = () => {
                                                         return rating.category === category;
                                                     }
                                                 );
+                                                const myRating = myRatings.find((r, i) => r.category === category);
                                                 console.log("rating index ", category, ratingIndex);
                                                 return (
                                                     <div key={category}>
                                                         {`How Do you like the ${category} of this teacher?`}
                                                         <RateBox
                                                             value={
-                                                                ratingIndex === -1
-                                                                    ? 0
-                                                                    : myRatings[ratingIndex].value
+                                                                myRating ? myRating.value : 0
                                                             }
                                                             category={category}
                                                             teacher={teacher?._id}
+                                                            getMyTeacherRatings={getMyTeacherRatings}
+
                                                         />
                                                     </div>
                                                 );
