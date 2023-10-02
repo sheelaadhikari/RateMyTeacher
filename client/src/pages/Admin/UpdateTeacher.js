@@ -56,7 +56,7 @@ const UpdateTeacher = () => {
                 toast.error(data?.message);
             } else {
                 toast.success("teacher updated successfully");
-                navigate("/dashboard/admin/teachers");
+                navigate("/");
             }
         } catch (error) {
             console.log(error);
@@ -75,7 +75,7 @@ const UpdateTeacher = () => {
                 `/api/v1/teacher/delete-teacher/${id}`
             );
             toast.success("teacher deleted  successfully");
-            navigate("/dashboard/admin/teachers");
+            navigate("/");
         } catch (error) {
             console.log(error);
             toast.error("something went wrong");
@@ -90,7 +90,7 @@ const UpdateTeacher = () => {
                         <AdminMenu />
                     </div>
                     <div className="col-md-9">
-                        <h1> UpdateTeachers</h1>
+                        <h1> UpdateTeacher</h1>
                         <div className="mb-3">
                             <label className="btn btn-outline-secondary col-md-12">
                                 {photo ? photo.name : "Upload Photo"}

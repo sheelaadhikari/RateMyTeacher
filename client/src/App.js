@@ -49,13 +49,13 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/tesst" element={<WrapElement>
-        <h1>hello</h1>
+
       </WrapElement>} />
 
       <Route path="/dashboard" isExact element={<WrapElement>
         <Dashboard />
       </WrapElement>} />
-      <Route path="/admin/dashboard" isExact element={<WrapAdminElement>
+      <Route path="/dashboard/admin" isExact element={<WrapAdminElement>
         <AdminDashboard />
       </WrapAdminElement>} />
 

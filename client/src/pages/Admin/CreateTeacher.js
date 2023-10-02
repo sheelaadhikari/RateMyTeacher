@@ -32,7 +32,7 @@ const CreateTeacher = () => {
                 toast.error(data?.message);
             } else {
                 toast.success("teacher created successfully");
-                navigate("/dashboard/admin/teachers");
+                navigate("/");
             }
         } catch (error) {
             console.log(error);
@@ -49,66 +49,70 @@ const CreateTeacher = () => {
                     </div>
                     <div className="col-md-9">
                         <h1> CreateTeachers</h1>
-                        <div className="mb-3">
-                            <label className="btn btn-outline-secondary col-md-12">
-                                {photo ? photo.name : "Upload Photo"}
-                                <input
-                                    type="file"
-                                    name="photo"
-                                    accept="image/*"
-                                    onChange={(e) => setPhoto(e.target.files[0])}
-                                    hidden
-                                />
-                            </label>
-                        </div>
-                        <div className="mb-3">
-                            {photo && (
-                                <div className="text-center">
-                                    <img
-                                        src={URL.createObjectURL(photo)}
-                                        alt="teacher_photo"
-                                        height={"200px"}
-                                        className="img img-responsive"
-                                    />
-                                </div>
-                            )}
-                        </div>
+                        <div className="form-container">
 
-                        <div className="mb-3">
-                            <input
-                                type="text"
-                                value={name}
-                                placeholder="write a name"
-                                className="form-control"
-                                onChange={(e) => {
-                                    setName(e.target.value);
-                                }}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <input
-                                type="text"
-                                value={subject}
-                                placeholder="write a subject name"
-                                className="form-control"
-                                onChange={(e) => {
-                                    setSubject(e.target.value);
-                                }}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <input
-                                type="text"
-                                value={bio}
-                                placeholder="write teacher bio"
-                                className="form-control"
-                                onChange={(e) => {
-                                    setBio(e.target.value);
-                                }}
-                            />
                             <div className="mb-3">
-                                <button className="btn btn-primary" onClick={handleCreate}> create teacher</button>
+                                <label className="btn btn-outline-secondary col-md-12">
+                                    {photo ? photo.name : "Upload Photo"}
+                                    <input
+                                        type="file"
+                                        name="photo"
+                                        accept="image/*"
+                                        onChange={(e) => setPhoto(e.target.files[0])}
+                                        hidden
+                                    />
+                                </label>
                             </div>
+                            <div className="mb-3">
+                                {photo && (
+                                    <div className="text-center">
+                                        <img
+                                            src={URL.createObjectURL(photo)}
+                                            alt="teacher_photo"
+                                            height={"200px"}
+                                            className="img img-responsive"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="mb-3" >
+                                <input
+                                    type="text"
+                                    value={name}
+                                    placeholder="write a name"
+                                    className="form-control"
+                                    onChange={(e) => {
+                                        setName(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    value={subject}
+                                    placeholder="write a subject name"
+                                    className="form-control"
+                                    onChange={(e) => {
+                                        setSubject(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    value={bio}
+                                    placeholder="write teacher bio"
+                                    className="form-control"
+                                    onChange={(e) => {
+                                        setBio(e.target.value);
+                                    }}
+                                />
+                                <div className="mb-3">
+                                    <button className="create-teacher-btn" onClick={handleCreate}> create teacher</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
