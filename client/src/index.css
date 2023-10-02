@@ -97,3 +97,49 @@ font-family: 'Poppins', sans-serif; */
   text-decoration: none !important;
   color: black !important;
 }
+
+/* list of teachers */
+.list-of-teachers {
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.container-box {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.teacher-box {
+  border-radius: 10px;
+  flex: 1;
+}
+.teacher-photo {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  padding: 15px 15px;
+}
+#see-your-teacher:hover {
+  color: red;
+}
+#teacher-teacher {
+  display: flex;
+}
+.card-title {
+  font-size: 30px;
+  font-weight: bolder;
+  color: red;
+}
+.rate-button {
+  padding: 20px 20px;
+  color: blue;
+  font-size: medium;
+  font-weight: bolder;
+}
+.rate-button:hover {
+  color: white;
+}

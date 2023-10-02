@@ -77,7 +77,7 @@ const TeacherDetail = () => {
                     className="card-img-top"
                     alt={teacher?.name}
                   />
-                  <div>
+                  <div className="rate-button">
                     <Link to={`/teacher/${teacher?.slug}/rate`}>
                       Rate Teacher
                     </Link>
@@ -87,13 +87,11 @@ const TeacherDetail = () => {
                       <RatingDisplayBox rating={teacherRating?.overall} />
                     </div>
                     <h5 className="card-title">{teacher?.name}</h5>
-                    <p className="card-text"> {teacher?.subject}</p>
-                    <p className="card-text"> {teacher?.bio}</p>
+
                     <div className="card-text">
                       <div>
-                        Teaching Style:{" "}
-                        <RatingDisplayBox
-                          rating={teacherRating?.teachingStyleAverae}
+                        Teaching Style
+                        <RatingDisplayBox rating={teacherRating?.teachingStyleAverage}
                         />
                       </div>
                       <div>

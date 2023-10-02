@@ -3,6 +3,9 @@ import Layout from "../components/Layout/Layout";
 import { useAuth } from "../context/auth";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import '../../src/index.css';
+
+
 
 const HomePage = () => {
     const [auth, setAuth] = useAuth();
@@ -30,11 +33,11 @@ const HomePage = () => {
     const isUser = auth?.user?.role === 0;
     return (
         <Layout>
-            <div>{loading ? "loading" : "home Page"}</div>
+            <div className="list-of-teachers">{loading ? "loading" : "List Of All Teachers"}</div>
 
             {/* <pre>{JSON.stringify(auth, null, 4)}</pre> */}
 
-            <div className="d-flex">
+            <div className="container-box">
                 {teachers?.map((t) => (
                     <Link
                         key={t._id}
@@ -42,8 +45,8 @@ const HomePage = () => {
                         className="teacher-link"
                     >
                         <div
-                            className="card m-2"
-                            style={{ width: "18rem" }}
+                            className="teacher-box"
+
                             onClick={() => {
                                 console.log(t.slug);
                                 console.log(t._id);
@@ -51,10 +54,10 @@ const HomePage = () => {
                         >
                             <img
                                 src={`/api/v1/teacher/teacher-photo/${t._id}`}
-                                className="card-img-top"
+                                className="teacher-photo"
                                 alt={t.name}
                             />
-                            <div className="card-body">
+                            <div className="teacher-details">
                                 <h5 className="card-title">{t.name}</h5>
                                 <p className="card-text"> {t.bio}</p>
                             </div>

@@ -43,6 +43,17 @@ const Header = () => {
                                     Home
                                 </NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink to="/about " className="nav-link">
+                                    About Us
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/contact " className="nav-link">
+                                    Contact Us
+                                </NavLink>
+                            </li>
+
 
                             {!auth.user ? (
                                 <>
@@ -57,6 +68,7 @@ const Header = () => {
                                             Login
                                         </NavLink>
                                     </li>
+
                                 </>
                             ) : (
                                 <>
@@ -86,6 +98,7 @@ const Header = () => {
                                                     Logout
                                                 </NavLink>
                                             </li>
+
                                         </ul>
                                     </li>
                                 </>

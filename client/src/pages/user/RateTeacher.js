@@ -80,7 +80,7 @@ const TeacherDetail = () => {
                                 <div className="card m-2" style={{ width: "18rem" }}>
                                     <img
                                         src={`/api/v1/teacher/teacher-photo/${teacher?._id}`}
-                                        className="card-img-top small-img"
+                                        className="card-img-top "
                                         alt={teacher?.name}
                                     />
 
