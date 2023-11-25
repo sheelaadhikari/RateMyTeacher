@@ -58,7 +58,8 @@ const HomePage = () => {
                                 alt={t.name}
                             />
                             <div className="teacher-details">
-                                <h5 className="card-title">{t.name}</h5>
+                                <p className="card-title">{t.name}</p>
+                                <p className="card-text"> {t.subject}</p>
                                 <p className="card-text"> {t.bio}</p>
                             </div>
                         </div>

@@ -130,7 +130,7 @@ font-family: 'Poppins', sans-serif; */
   display: flex;
 }
 .card-title {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bolder;
   color: red;
 }
@@ -142,4 +142,9 @@ font-family: 'Poppins', sans-serif; */
 }
 .rate-button:hover {
   color: white;
+}
+.teacher-details {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }

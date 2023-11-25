@@ -89,10 +89,10 @@ const UpdateTeacher = () => {
                     <div className="col-md-3">
                         <AdminMenu />
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-9" id="box-wrapper">
                         <h1> UpdateTeacher</h1>
-                        <div className="mb-3">
-                            <label className="btn btn-outline-secondary col-md-12">
+                        <div className="the box">
+                            <label className="btn btn-outline-secondary ">
                                 {photo ? photo.name : "Upload Photo"}
                                 <input
                                     type="file"
@@ -103,9 +103,9 @@ const UpdateTeacher = () => {
                                 />
                             </label>
                         </div>
-                        <div className="mb-3">
+                        <div className="the-box">
                             {photo ? (
-                                <div className="text-center">
+                                <div className="the-photo">
                                     <img
                                         src={URL.createObjectURL(photo)}
                                         alt="teacher_photo"
@@ -119,13 +119,13 @@ const UpdateTeacher = () => {
                                         src={`/api/v1/teacher/teacher-photo/${id}`}
                                         alt="teacher_photo"
                                         height={"200px"}
-                                        className="img img-responsive"
+                                        className="image"
                                     />
                                 </div>
                             )}
                         </div>
 
-                        <div className="mb-3">
+                        <div className="the-box">
                             <input
                                 type="text"
                                 value={name}
@@ -136,7 +136,7 @@ const UpdateTeacher = () => {
                                 }}
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="the-box">
                             <input
                                 type="text"
                                 value={subject}
@@ -147,7 +147,7 @@ const UpdateTeacher = () => {
                                 }}
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="the-box">
                             <input
                                 type="text"
                                 value={bio}
@@ -157,13 +157,13 @@ const UpdateTeacher = () => {
                                     setBio(e.target.value);
                                 }}
                             />
-                            <div className="mb-3">
+                            <div className="the-box">
                                 <button className="btn btn-primary" onClick={handleUpdate}>
                                     {" "}
                                     Update Teacher
                                 </button>
                             </div>
-                            <div className="mb-3">
+                            <div className="the-box">
                                 <button className="btn btn-danger" onClick={handleDelete}>
                                     {" "}
                                     Delete Teacher
