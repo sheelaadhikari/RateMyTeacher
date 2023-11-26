@@ -145,9 +145,34 @@ export const loginController = async (req, res) => {
 
 
 
-export const userListController = async () => {
+export const userListController = async (req, res) => {
 
+
+    try {
+        const users = await userModel
+            .find({})
+            .populate("_id")
+            .select("-photo")
+            .limit(12)
+            .sort({ createdAt: -1 });
+        res.status(200).send({
+            countTotal: users.length,
+            success: true,
+            message: "all users",
+            users,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "error in getting  all teacher",
+            error: error.message,
+        });
+    }
 };
+
+
+
 
 // forgot password controller
 export const forgotPasswordController = async (req, res) => {
