@@ -24,7 +24,24 @@ const Users = () => {
     useEffect(() => {
         getAllUsers();
     }, []);
+    // delete user
+    const handleDelete = async () => {
+        try {
 
+
+            let answer = window.prompt("are you sure to delete the user");
+            if (!answer) return;
+            console.log("delete the user")
+            const data = await axios.delete(
+                `/api/v1/user/delete-user/${id}`
+            );
+            toast.success("user deleted  successfully");
+
+        } catch (error) {
+            console.log(error);
+            toast.error("something went wrong");
+        }
+    };
 
     return (
         <Layout>
@@ -40,14 +57,17 @@ const Users = () => {
                                 key={u._id}
                                 to=
                                 {`/admin/dashboard/user/${u.slug}`}
-                                className="teacher-link"
+
                             >
                                 <div className="card m-2" style={{ width: "18rem" }}>
                                     <div className="card-body">
                                         <h5 className="card-title">Name:{u.name}</h5>
                                         <h5 className="card-title">Email:{u.email}</h5>
                                         <p className="card-text">Fav Sport:{u.answer}</p>
-
+                                        <button className="btn btn-danger" onClick={handleDelete}>
+                                            {" "}
+                                            Delete User
+                                        </button>
                                     </div>
                                 </div>
                             </Link>

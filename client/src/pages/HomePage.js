@@ -14,7 +14,7 @@ const HomePage = () => {
 
     useEffect(() => {
         loadAllTeachers();
-        console.log("hello");
+
     }, []);
 
     const loadAllTeachers = async () => {
@@ -33,9 +33,16 @@ const HomePage = () => {
     const isUser = auth?.user?.role === 0;
     return (
         <Layout>
+
+
+
             <div className="list-of-teachers">{loading ? "loading" : "List Of All Teachers"}</div>
 
             {/* <pre>{JSON.stringify(auth, null, 4)}</pre> */}
+
+
+
+
 
             <div className="container-box">
                 {teachers?.map((t) => (

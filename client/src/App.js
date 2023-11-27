@@ -81,9 +81,12 @@ function App() {
       </WrapAdminElement>} />
       <Route path="/admin/users" element={<WrapAdminElement>
         <Users />
+
       </WrapAdminElement>} />
 
-
+      <Route path="/admin/dashboard/user/:slug" element={<WrapAdminElement>
+        <Users />
+      </WrapAdminElement>} />
 
 
 

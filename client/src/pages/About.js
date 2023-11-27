@@ -14,7 +14,7 @@ const About = () => {
                 <div className='col-md-4'>
                     <h1 className='bg-dark p-4 text-white text-center mt-5 '>About Us</h1>
                     <p className='text-justify mt-2'>
-                        RateMyProfessors.com (RMP) is a review site, founded in May 1999 by John Swapceinski,
+                        RateMyTeacher is a review site, founded in May 1999 by John Swapceinski,
                         a software engineer from Menlo Park, California, which allows anyone to assign ratings to any teachers and choose best one among them.
                     </p>
 

@@ -171,6 +171,25 @@ export const userListController = async (req, res) => {
     }
 };
 
+// delete user controller
+export const deleteUserController = async (req, res) => {
+    try {
+        console.log(req.params._id);
+        await userModel.findByIdAndDelete(req.params._id);
+
+        res.status(200).send({
+            success: true,
+            message: "deleted user successfully",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "error while deleting user",
+            error,
+        });
+    }
+};
 
 
 
