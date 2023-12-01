@@ -9,13 +9,10 @@ import Register from "./pages/auth/Register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/user/Dashboard";
-import PrivateRoutes from "./components/Layout/Routes/Private";
 import ForgotPassword from "./pages/auth/ForgotPassword";
-import AdminRoute from "./components/Layout/Routes/AdminRoute";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Users from "./pages/Admin/Users";
-import Orders from "./pages/user/Orders";
-import Profile from "./pages/user/Profile";
+
 import CreateTeacher from "./pages/Admin/CreateTeacher";
 import Teachers from './pages/Admin/Teachers';
 import UpdateTeacher from "./pages/Admin/UpdateTeacher";
@@ -27,6 +24,7 @@ import Spinner from "./components/Layout/Spinner";
 import WrapAdminElement from "./WrapAdminElement";
 import axios from "axios";
 import RateTeacher from "./pages/user/RateTeacher";
+import Ratings from "./pages/Ratings";
 
 
 function App() {
@@ -112,6 +110,8 @@ function App() {
 
       <Route path="/login" element={<Login />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/ratings" element={<Ratings />} />
+
       <Route path="/policy" element={<Policy />} />
       <Route path="*" element={<Pagenotfound />} />
     </Routes>

@@ -10,10 +10,12 @@ import { Link } from "react-router-dom";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const [id, setId] = useState([])
     const getAllUsers = async (req, res) => {
         try {
             const { data } = await axios.get("/api/v1/user/get-users");
             setUsers(data.users);
+            setId(data.users.id)
         } catch (error) {
             console.log(error);
             toast.error("something went wrong");
@@ -33,7 +35,7 @@ const Users = () => {
             if (!answer) return;
             console.log("delete the user")
             const data = await axios.delete(
-                `/api/v1/user/delete-user/${id}`
+                "/api/v1/user/delete-user/656993f8b273504fbb5f0f37"
             );
             toast.success("user deleted  successfully");
 
