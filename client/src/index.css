@@ -148,3 +148,7 @@ font-family: 'Poppins', sans-serif; */
   text-align: center;
   align-items: center;
 }
+.h-ratings {
+  display: flex;
+  padding: 20px 20px;
+}
