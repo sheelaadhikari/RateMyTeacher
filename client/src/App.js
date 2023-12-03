@@ -14,7 +14,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Users from "./pages/Admin/Users";
 
 import CreateTeacher from "./pages/Admin/CreateTeacher";
-import Teachers from './pages/Admin/Teachers';
+import Teachers from "./pages/Admin/Teachers";
 import UpdateTeacher from "./pages/Admin/UpdateTeacher";
 import TeacherDetail from "./pages/user/TeacherDetail";
 import WrapElement from "./WrapElement";
@@ -26,72 +26,108 @@ import axios from "axios";
 import RateTeacher from "./pages/user/RateTeacher";
 import Ratings from "./pages/Ratings";
 
-
 function App() {
-
   const [initialized, setInitialized] = useState(false);
 
-  const [auth] = useAuth()
+  const [auth] = useAuth();
 
   useEffect(() => {
     if (auth.isLoggedIn != undefined) {
-      axios.defaults.headers.common['Authorization'] = auth.token
+      axios.defaults.headers.common["Authorization"] = auth.token;
 
-      setInitialized(true)
+      setInitialized(true);
     }
-  }, [auth])
+  }, [auth]);
 
   const isUser = auth?.user?.role === 0;
 
-  return initialized ? <>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/tesst" element={<WrapElement>
+  return initialized ? (
+    <>
+      <Routes>
+        <Route path="/" element={<Ratings />} />
+        <Route path="/tesst" element={<WrapElement></WrapElement>} />
 
-      </WrapElement>} />
+        <Route
+          path="/dashboard"
+          isExact
+          element={
+            <WrapElement>
+              <Dashboard />
+            </WrapElement>
+          }
+        />
+        <Route
+          path="/dashboard/admin"
+          isExact
+          element={
+            <WrapAdminElement>
+              <AdminDashboard />
+            </WrapAdminElement>
+          }
+        />
 
-      <Route path="/dashboard" isExact element={<WrapElement>
-        <Dashboard />
-      </WrapElement>} />
-      <Route path="/dashboard/admin" isExact element={<WrapAdminElement>
-        <AdminDashboard />
-      </WrapAdminElement>} />
+        <Route
+          path="/teacher/:slug/rate"
+          element={
+            <WrapElement>
+              <RateTeacher />
+            </WrapElement>
+          }
+        />
 
-      <Route path="/teacher/:slug/rate" element={<WrapElement>
-        <RateTeacher />
-      </WrapElement>} />
+        <Route
+          path="/teacher/:slug"
+          element={
+            <WrapElement>
+              <TeacherDetail />
+            </WrapElement>
+          }
+        />
 
-      <Route path="/teacher/:slug" element={<WrapElement>
-        <TeacherDetail />
-      </WrapElement>} />
+        <Route
+          path="/dashboard/user"
+          element={
+            <WrapElement>
+              <Dashboard />
+            </WrapElement>
+          }
+        />
 
+        <Route
+          path="/admin/create-teacher"
+          element={
+            <WrapAdminElement>
+              <CreateTeacher />
+            </WrapAdminElement>
+          }
+        />
+        <Route
+          path="/admin/teacher/:slug"
+          element={
+            <WrapAdminElement>
+              <UpdateTeacher />
+            </WrapAdminElement>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <WrapAdminElement>
+              <Users />
+            </WrapAdminElement>
+          }
+        />
 
+        <Route
+          path="/admin/dashboard/user/:slug"
+          element={
+            <WrapAdminElement>
+              <Users />
+            </WrapAdminElement>
+          }
+        />
 
-      <Route path="/dashboard/user" element={<WrapElement>
-        <Dashboard />
-      </WrapElement>} />
-
-      <Route path="/admin/create-teacher" element={<WrapAdminElement>
-        <CreateTeacher />
-      </WrapAdminElement>} />
-      <Route path="/admin/teacher/:slug" element={<WrapAdminElement>
-        <UpdateTeacher />
-      </WrapAdminElement>} />
-      <Route path="/admin/users" element={<WrapAdminElement>
-        <Users />
-
-      </WrapAdminElement>} />
-
-      <Route path="/admin/dashboard/user/:slug" element={<WrapAdminElement>
-        <Users />
-      </WrapAdminElement>} />
-
-
-
-
-
-
-      {/* <Route path="/dashboard" element={<PrivateRoutes />}>
+        {/* <Route path="/dashboard" element={<PrivateRoutes />}>
         <Route path="user" element={<Dashboard />} />
         <Route path="teacher/:slug" element={<TeacherDetail />} />
         <Route path="user/orders" element={<Orders />} />
@@ -104,18 +140,21 @@ function App() {
         <Route path="admin/teacher/:slug" element={<UpdateTeacher />} />
         <Route path="admin/teachers" element={<Teachers />} />
       </Route> */}
-      <Route path="/about" element={<About />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
-      <Route path="/login" element={<Login />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/ratings" element={<Ratings />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/teachers" element={<HomePage />} />
 
-      <Route path="/policy" element={<Policy />} />
-      <Route path="*" element={<Pagenotfound />} />
-    </Routes>
-  </> : <Spinner />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="*" element={<Pagenotfound />} />
+      </Routes>
+    </>
+  ) : (
+    <Spinner />
+  );
 }
 
 export default App;

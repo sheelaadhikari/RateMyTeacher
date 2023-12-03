@@ -33,24 +33,29 @@ const Ratings = () => {
 
   return (
     <div>
-      Ratings
       <Layout>
         <div className="list-of-teachers">
           {loading ? "loading" : "List Of All TeachersRatings"}
         </div>
-        <div className="container-box">
+        <div className="d-flex flex-wrap">
           {ratings
             ?.sort((a, b) => b.overallRating - a.overallRating) // Sort ratings in descending order
             .map((r) => (
               <div className="h-ratings" key={r}>
                 <div style={{ fontWeight: "bold", color: "black" }}>
                   <img src={`/api/v1/teacher/teacher-photo/${r._id}`}></img>
-                  <div className="card-text">
+                  <div className="d-flex justify-content-center pt-2 gap-2">
                     <RatingDisplayBox rating={r.overallRating} />
+                    <span style={{ paddingTop: "2px" }}>
+                      {" "}
+                      {r?.overallRating?.toFixed(1)}
+                    </span>
                   </div>
-                  <p className="card-text">Name : {r.teacher[0].name}</p>
-                  <p className="card-text">Subject : {r.teacher[0].subject}</p>
-                  <p className="card-text">Bio : {r.teacher[0].bio}</p>
+                  <div className="text-center">
+                    {r.teacher[0].name} [{r.teacher[0].subject}]
+                  </div>
+                  <div className="text-center"></div>
+                  <div className="text-center">{r.teacher[0].bio}</div>
                 </div>
               </div>
             ))}
