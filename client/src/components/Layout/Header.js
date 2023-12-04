@@ -45,7 +45,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink to="/teachers " className="nav-link">
-                  All Teachers
+                  Teachers
                 </NavLink>
               </li>
               <li className="nav-item">
