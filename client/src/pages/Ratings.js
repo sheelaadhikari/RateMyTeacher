@@ -35,7 +35,7 @@ const Ratings = () => {
     <div>
       <Layout>
         <div className="list-of-teachers">
-          {loading ? "loading" : "List Of All TeachersRatings"}
+          {loading ? "loading" : "Ratings Of Teachers"}
         </div>
         <div className="d-flex flex-wrap">
           {ratings

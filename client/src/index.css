@@ -151,3 +151,7 @@ font-family: 'Poppins', sans-serif; */
   padding: 20px 20px;
   width: 300px;
 }
+.f-btn {
+  background-color: red;
+  padding: 3px 3px;
+}
