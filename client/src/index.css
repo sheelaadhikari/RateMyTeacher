@@ -130,6 +130,7 @@ font-family: 'Poppins', sans-serif; */
 .card-title {
   font-size: 20px;
   font-weight: bolder;
+  font-style: bold;
   color: red;
 }
 .rate-button {
@@ -145,6 +146,8 @@ font-family: 'Poppins', sans-serif; */
   justify-content: center;
   text-align: center;
   align-items: center;
+  font-size: medium;
+  font-weight: bold;
 }
 .h-ratings {
   display: flex;
@@ -154,4 +157,9 @@ font-family: 'Poppins', sans-serif; */
 .f-btn {
   background-color: red;
   padding: 3px 3px;
+}
+.wrapper {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }

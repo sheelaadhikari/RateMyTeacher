@@ -47,11 +47,11 @@ const CreateTeacher = () => {
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-3">
             <h1> CreateTeachers</h1>
             <div className="form-container">
               <div className="mb-3">
-                <label className="btn btn-outline-secondary col-md-12">
+                <label className="btn btn-outline-primary col-md-12 ">
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"
@@ -107,8 +107,11 @@ const CreateTeacher = () => {
                     setBio(e.target.value);
                   }}
                 />
-                <div className="mb-3">
-                  <button className="create-teacher-btn" onClick={handleCreate}>
+                <div className="mb-3 p-3">
+                  <button
+                    className=" btn btn-outline-primary col-md-12 "
+                    onClick={handleCreate}
+                  >
                     {" "}
                     create teacher
                   </button>
