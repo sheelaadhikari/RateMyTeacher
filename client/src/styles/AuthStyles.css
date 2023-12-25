@@ -33,6 +33,8 @@
   background-color: black;
   color: white;
   width: 250px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .form-container form button:hover {
@@ -40,4 +42,10 @@
   border-radius: 0;
   background: #000000;
   background: -webkit-linear-gradient(to right, #434343, #000000);
+}
+.forgot-password {
+  color: blue;
+  text-align: center;
+  padding-top: 5px;
+  font-weight: bold;
 }
