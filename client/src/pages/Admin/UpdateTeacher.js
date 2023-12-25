@@ -90,13 +90,13 @@ const UpdateTeacher = () => {
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9 text-center" id="box-wrapper">
-            <h1> UpdateTeacher</h1>
+          <div className="col-md-9  text-center " id="box-wrapper">
+            <h2> Update Existing Teacher</h2>
             <hr></hr>
-            <div className="wrapper">
+            <div className="wrapper form-container">
               <div className="the-box">
                 {photo ? (
-                  <div className="the-photo">
+                  <div className="the-photo pt-5">
                     <img
                       src={URL.createObjectURL(photo)}
                       alt="teacher_photo"
@@ -110,13 +110,13 @@ const UpdateTeacher = () => {
                       src={`/api/v1/teacher/teacher-photo/${id}`}
                       alt="teacher_photo"
                       height={"200px"}
-                      className="image"
+                      className="img img-responsive mb-3 mt-3"
                     />
                   </div>
                 )}
               </div>
               <div className="the box">
-                <label className="btn btn-primary mt-3 mb-3">
+                <label className="btn btn-outline-primary col-md-12 mb-3">
                   {photo ? photo.name : "Upload Photo"}
                   <input
                     type="file"
@@ -128,7 +128,7 @@ const UpdateTeacher = () => {
                 </label>
               </div>
 
-              <div className="the-box">
+              <div className="mb-3">
                 <input
                   type="text"
                   value={name}
@@ -139,7 +139,7 @@ const UpdateTeacher = () => {
                   }}
                 />
               </div>
-              <div className="the-box">
+              <div className="mb-3">
                 <input
                   type="text"
                   value={subject}
@@ -150,7 +150,7 @@ const UpdateTeacher = () => {
                   }}
                 />
               </div>
-              <div className="the-box">
+              <div className="mb-3">
                 <input
                   type="text"
                   value={bio}
@@ -160,17 +160,23 @@ const UpdateTeacher = () => {
                     setBio(e.target.value);
                   }}
                 />
-                <div className="box d-flex">
-                  <div className="box p-3">
-                    <button className="btn btn-primary " onClick={handleUpdate}>
+                <div className="update-box d-flex">
+                  <div className="u-box p-3">
+                    <button
+                      className="btn btn-outline-primary col-md-12  "
+                      onClick={handleUpdate}
+                    >
                       {" "}
-                      Update Teacher
+                      Update
                     </button>
                   </div>
-                  <div className="box p-3 float-end">
-                    <button className="btn btn-danger" onClick={handleDelete}>
+                  <div className="d-box p-3 ">
+                    <button
+                      className="btn btn-outline-danger col-md-12 "
+                      onClick={handleDelete}
+                    >
                       {" "}
-                      Delete Teacher
+                      Delete
                     </button>
                   </div>
                 </div>

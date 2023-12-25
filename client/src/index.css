@@ -163,3 +163,18 @@ font-family: 'Poppins', sans-serif; */
   align-items: center;
   justify-content: center;
 }
+.create-teachers {
+  justify-self: center;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.update-box {
+  display: flex;
+}
+.u-box {
+  flex: 1;
+}
+.d-box {
+  flex: 1;
+}

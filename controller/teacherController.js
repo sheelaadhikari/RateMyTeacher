@@ -120,7 +120,6 @@ export const teacherPhotoController = async (req, res) => {
 // delete teacher
 export const deleteTeacherController = async (req, res) => {
   try {
-    console.log(req.params._id);
     await rateTeacherModel.deleteMany({ teacher: req.params._id });
     await teacherModel.findByIdAndDelete(req.params._id).select("-photo");
 

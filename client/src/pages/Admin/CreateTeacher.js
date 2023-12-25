@@ -47,8 +47,9 @@ const CreateTeacher = () => {
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-3">
-            <h1> CreateTeachers</h1>
+          <div className="col-md-3 create-teachers">
+            <h2> Add New Teacher</h2>
+            <hr></hr>
             <div className="form-container">
               <div className="mb-3">
                 <label className="btn btn-outline-primary col-md-12 ">
