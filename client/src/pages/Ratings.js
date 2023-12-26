@@ -41,9 +41,15 @@ const Ratings = () => {
           {ratings
             ?.sort((a, b) => b.overallRating - a.overallRating) // Sort ratings in descending order
             .map((r) => (
-              <div className="h-ratings" key={r}>
-                <div style={{ fontWeight: "bold", color: "black" }}>
-                  <img src={`/api/v1/teacher/teacher-photo/${r._id}`}></img>
+              <div className="" key={r}>
+                <div
+                  style={{ fontWeight: "bold", color: "black" }}
+                  className="t-link"
+                >
+                  <img
+                    src={`/api/v1/teacher/teacher-photo/${r._id}`}
+                    className="mb-3"
+                  ></img>
                   <div className="d-flex justify-content-center pt-2 gap-2">
                     <RatingDisplayBox rating={r.overallRating} />
                     <span style={{ paddingTop: "2px" }}>
@@ -51,10 +57,10 @@ const Ratings = () => {
                       {r?.overallRating?.toFixed(1)}
                     </span>
                   </div>
-                  <div className="text-center">
+                  <hr></hr>
+                  <div className=" text-center mb-2">
                     {r.teacher[0].name} [{r.teacher[0].subject}]
                   </div>
-                  <div className="text-center"></div>
                   <div className="text-center">{r.teacher[0].bio}</div>
                 </div>
               </div>

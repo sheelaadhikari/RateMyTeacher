@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import UserMenu from "../../components/Layout/UserMenu";
 import RatingDisplayBox from "./components/RatingDisplayBox";
+
 // teacher details
 const TeacherDetail = () => {
   const navigate = useNavigate();
@@ -12,12 +13,9 @@ const TeacherDetail = () => {
   const [loading, setLoading] = useState(true);
   const [teacherRating, setTeacherRating] = useState(null);
 
-
   useEffect(() => {
     getSingleTeacherDetail();
-
   }, []);
-
 
   useEffect(() => {
     if (teacher?._id) {
@@ -70,7 +68,6 @@ const TeacherDetail = () => {
               <div className="col-md-9">
                 <h1> Teacher Details</h1>
 
-
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
                     src={`/api/v1/teacher/teacher-photo/${teacher?._id}`}
@@ -78,41 +75,58 @@ const TeacherDetail = () => {
                     alt={teacher?.name}
                   />
                   <div className="rate-button">
-                    <Link to={`/teacher/${teacher?.slug}/rate`}>
+                    <div className="d-flex justify-content-center">
+                      <RatingDisplayBox rating={teacherRating?.overall} />
+                    </div>
+                    <Link
+                      to={`/teacher/${teacher?.slug}/rate`}
+                      className="btn btn-outline-primary col-md-12 "
+                    >
                       Rate Teacher
                     </Link>
                   </div>
-                  <div className="card-body">
-                    <div className="card-text">
-                      <RatingDisplayBox rating={teacherRating?.overall} />
-                    </div>
-                    <h5 className="card-title">{teacher?.name}</h5>
+                  <h5 className=" teacher-d-c text-center mb-2 ">
+                    {teacher?.name}
+                  </h5>
+                  <hr></hr>
 
+                  <div className="card-body">
                     <div className="card-text">
                       <div>
                         Teaching Style
-                        <RatingDisplayBox rating={teacherRating?.teachingStyleAverage}
+                        <RatingDisplayBox
+                          rating={teacherRating?.teachingStyleAverage}
                         />
                       </div>
                       <div>
                         Punctuality
-                        <RatingDisplayBox rating={teacherRating?.punctualityAverage} />
+                        <RatingDisplayBox
+                          rating={teacherRating?.punctualityAverage}
+                        />
                       </div>
                       <div>
                         Funnyness
-                        <RatingDisplayBox rating={teacherRating?.funnynessAverage} />
+                        <RatingDisplayBox
+                          rating={teacherRating?.funnynessAverage}
+                        />
                       </div>
                       <div>
                         Strictness
-                        <RatingDisplayBox rating={teacherRating?.strictnessAverage} />
+                        <RatingDisplayBox
+                          rating={teacherRating?.strictnessAverage}
+                        />
                       </div>
                       <div>
                         Appearance
-                        <RatingDisplayBox rating={teacherRating?.appearanceAverage} />
+                        <RatingDisplayBox
+                          rating={teacherRating?.appearanceAverage}
+                        />
                       </div>
                       <div>
                         Assignment
-                        <RatingDisplayBox rating={teacherRating?.assignmentAverage} />
+                        <RatingDisplayBox
+                          rating={teacherRating?.assignmentAverage}
+                        />
                       </div>
                       <div>
                         Ineteractivity

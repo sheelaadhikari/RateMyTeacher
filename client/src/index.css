@@ -96,6 +96,23 @@ font-family: 'Poppins', sans-serif; */
 .teacher-link {
   text-decoration: none !important;
   color: black !important;
+  border-style: solid;
+  border-color: black;
+  justify-content: space-evenly;
+  margin: 6px 6px;
+}
+.t-link:hover {
+  border-style: solid;
+  border-color: red;
+  border-radius: 15px;
+}
+.t-link {
+  text-decoration: none !important;
+  color: black !important;
+  border-style: solid;
+  border-color: black;
+  justify-content: space-evenly;
+  margin: 6px 6px;
 }
 
 /* list of teachers */
@@ -177,4 +194,8 @@ font-family: 'Poppins', sans-serif; */
 }
 .d-box {
   flex: 1;
+}
+.teacher-d-c {
+  color: red;
+  font-weight: bold;
 }

@@ -41,7 +41,7 @@ const HomePage = () => {
           <Link
             key={t._id}
             to={isUser ? `/teacher/${t.slug}` : `/admin/teacher/${t.slug}`}
-            className="teacher-link"
+            className="t-link"
           >
             <div
               className="teacher-box"
@@ -55,8 +55,10 @@ const HomePage = () => {
                 className="teacher-photo"
                 alt={t.name}
               />
+
               <div className="teacher-details">
                 <p className="card-title">{t.name}</p>
+                <hr></hr>
                 <p className="card-text"> {t.subject}</p>
                 <p className="card-text"> {t.bio}</p>
               </div>
