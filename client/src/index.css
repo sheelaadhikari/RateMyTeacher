@@ -113,6 +113,7 @@ font-family: 'Poppins', sans-serif; */
   border-color: black;
   justify-content: space-evenly;
   margin: 6px 6px;
+  border-radius: 15px;
 }
 
 /* list of teachers */
@@ -137,6 +138,7 @@ font-family: 'Poppins', sans-serif; */
   height: 220px;
   object-fit: cover;
   padding: 15px 15px;
+  border-radius: 15px;
 }
 #see-your-teacher:hover {
   color: red;
@@ -198,4 +200,12 @@ font-family: 'Poppins', sans-serif; */
 .teacher-d-c {
   color: red;
   font-weight: bold;
+}
+.flex-wrap {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.teachers-wrapping-box {
+  margin-left: 50px;
+  margin-bottom: 30px;
 }

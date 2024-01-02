@@ -48,7 +48,7 @@ const Users = () => {
           <h1 className="text-center">All User List</h1>
           <div className="flex">
             {users?.map((u) => (
-              <Link key={u._id} to={`/admin/dashboard/user/${u.slug}`}>
+              <Link key={u._id} to={`/admin/dashboard/user/${u.name}`}>
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <div className="card-body">
                     <h5 className="card-title">Name:{u.name}</h5>

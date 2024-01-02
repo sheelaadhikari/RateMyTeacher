@@ -33,17 +33,17 @@ const Teachers = () => {
         </div>
         <div className="col-md-9 ">
           <h1 className="text-center">All Teachers List</h1>
-          <div className="flex ">
+          <div className="flex flex-wrap ">
             {teachers?.map((t) => (
               <Link
                 key={t._id}
                 to={`/dashboard/admin/teacher/${t.slug}`}
-                className="teacher-link"
+                className=""
               >
-                <div className="card m-2" style={{ width: "18rem" }}>
+                <div className="card m-2 " style={{ width: "18rem" }}>
                   <img
                     src={`/api/v1/teacher/teacher-photo/${t._id}`}
-                    className="card-img-top"
+                    className="card-img-top teacher-photo"
                     alt={t.name}
                   />
                   <div className="card-body ">

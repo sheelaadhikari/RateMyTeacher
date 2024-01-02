@@ -57,7 +57,7 @@ const UpdateTeacher = () => {
         toast.error(data?.message);
       } else {
         toast.success("teacher updated successfully");
-        navigate("/");
+        navigate("/teachers");
       }
     } catch (error) {
       console.log(error);
@@ -76,7 +76,7 @@ const UpdateTeacher = () => {
         `/api/v1/teacher/delete-teacher/${id}`
       );
       toast.success("teacher deleted  successfully");
-      navigate("/");
+      navigate("/teachers");
     } catch (error) {
       console.log(error);
       toast.error("something went wrong");

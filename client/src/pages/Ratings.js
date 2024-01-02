@@ -35,20 +35,20 @@ const Ratings = () => {
     <div>
       <Layout>
         <div className="list-of-teachers">
-          {loading ? "loading" : "Ratings Of Teachers"}
+          {loading ? "loading" : "Ranking Of Teachers"}
         </div>
         <div className="d-flex flex-wrap">
           {ratings
             ?.sort((a, b) => b.overallRating - a.overallRating) // Sort ratings in descending order
             .map((r) => (
-              <div className="" key={r}>
+              <div className=" teachers-wrapping-box" key={r}>
                 <div
                   style={{ fontWeight: "bold", color: "black" }}
                   className="t-link"
                 >
                   <img
                     src={`/api/v1/teacher/teacher-photo/${r._id}`}
-                    className="mb-3"
+                    className="mb-3 teacher-photo"
                   ></img>
                   <div className="d-flex justify-content-center pt-2 gap-2">
                     <RatingDisplayBox rating={r.overallRating} />
